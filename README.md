@@ -7,3 +7,4 @@
 - Inserir tarefa
 - Remover tarefa
 - Concluir tarefa
+- Recuperar tarefas acrescentadas
