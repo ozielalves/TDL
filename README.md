@@ -1,2 +1,9 @@
 # TDL
-Personal Todo List Desenvolvido em React, Vue, Angular e Svelte
+
+> Lista de Tarefas Pessoal
+
+- Cadastro de Usuário
+- Login
+- Inserir tarefa
+- Remover tarefa
+- Concluir tarefa
