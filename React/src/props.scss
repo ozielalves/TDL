@@ -1,0 +1,10 @@
+$Playfair: 'Playfair Display', serif;
+$doneShadow: -20px 12px 0px #3dd8ad;
+$todoShadow: 10px 8px 0px #ffa500;
+
+@mixin flexing($direction) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}

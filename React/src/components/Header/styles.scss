@@ -1,0 +1,55 @@
+@import "../../props.scss"; 
+
+header {
+  @include flexing(column);
+  max-height: 270px;
+  text-align: center;
+  font-size: 1.5rem;
+  box-shadow: -20px -12px 0px #222231;
+  padding: 2rem;
+  margin: 2rem 0 0 0;
+  transition: 1s ease;
+  border-style: solid;
+  border-radius: 5px;
+
+  .title {
+    justify-self: center;
+    display: flex;
+    
+    i {
+        position: relative;
+        align-self: center;
+        margin: 1rem;
+    }
+  }
+}
+
+.not-blank{
+  box-shadow: 20px 12px 0px #222231;
+  border-radius: 5px;
+}
+
+@media screen and (max-width:768px) {
+
+  header {
+    font-size: 1rem;
+    padding: 2rem;
+    margin: 2rem 0 0 0;
+    box-shadow: -20px -12px 0px #222231;
+    border-radius: 5px;
+
+    .todo-input {
+        width: 150px;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  header {
+    width:  230px;
+
+    .fa-stream {
+        display: none;
+    }
+  }
+}
