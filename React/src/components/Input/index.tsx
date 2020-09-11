@@ -1,14 +1,21 @@
-import React from 'react';
+import React, { FormEvent } from 'react';
 
 import './styles.css'
 
 const Input = () => {
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+  }
+
   return (
-    <form>
-      <input type="text" className="todo-input" required/>
-      <button className="todo-button" type="submit">
-        <i className="fas fa-plus-square"></i>
-      </button>
+    <form onSubmit={handleSubmit}>
+      <div className="todoInput">
+        <input type="text" className="todo-input" required/>
+        <button className="todo-button" type="submit">
+          <i className="fas fa-plus-square"></i>
+        </button>
+      </div>
       <div className="select">
         <select name="todos" className="filter-todos">
           <option value="all">All</option>

@@ -23,6 +23,12 @@ header {
   transition: 1s ease;
   border-style: solid;
   border-radius: 5px;
+  background: white;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 header .title {

@@ -2,17 +2,25 @@
 
 form {
   margin: 10px;
+  @include flexing(column);
+  
+  .todoInput {
+    @include flexing(row);
 
-  input, button{
+    input, button{
       padding: 0.5rem;
       border-width: 3px;
       border-color: #222231;
       font-weight: bold;
       border-style: solid;
       border-radius: 1.5px;
-  }
+    }
 
-  button {
+    input {
+      margin-right: 0.3rem;
+    }
+
+    button {
       cursor: pointer;
       color: #222231;
       border-radius: 1.5px;
@@ -22,6 +30,7 @@ form {
           background: #222231;
           color: white;
       }
+    }
   }
 }
 

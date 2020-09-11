@@ -1,8 +1,37 @@
 form {
   margin: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-form input, form button {
+form .todoInput {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+form .todoInput input, form .todoInput button {
   padding: 0.5rem;
   border-width: 3px;
   border-color: #222231;
@@ -11,7 +40,11 @@ form input, form button {
   border-radius: 1.5px;
 }
 
-form button {
+form .todoInput input {
+  margin-right: 0.3rem;
+}
+
+form .todoInput button {
   cursor: pointer;
   color: #222231;
   border-radius: 1.5px;
@@ -19,7 +52,7 @@ form button {
   transition: all 0.3s ease;
 }
 
-form button:hover {
+form .todoInput button:hover {
   background: #222231;
   color: white;
 }
