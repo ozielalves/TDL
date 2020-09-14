@@ -10,7 +10,7 @@
 - [X] Concluir tarefa
 - [X] Recuperar tarefas acrescentadas
 - [ ] Todos Pagination
-- [ ] Transitions
+- [ ] Transitions/Animations
 
 ## Protótipo do Projeto:
 
