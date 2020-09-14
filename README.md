@@ -9,6 +9,8 @@
 - [X] Remover tarefa
 - [X] Concluir tarefa
 - [X] Recuperar tarefas acrescentadas
+- [ ] Todos Pagination
+- [ ] Transitions
 
 ## Protótipo do Projeto:
 
