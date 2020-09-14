@@ -12,6 +12,9 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  padding: 2rem 10rem;
+  background: #2222314d;
+  margin: 2rem;
 }
 
 .home .todo-container {
@@ -34,7 +37,6 @@
   margin: 2rem 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
-  /*grid-template-columns: 200px 1fr 1fr 1fr;*/
 }
 
 .home .todo-container .todo-list {
