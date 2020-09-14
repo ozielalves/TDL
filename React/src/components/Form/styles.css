@@ -37,7 +37,11 @@ form .todoInput input, form .todoInput button {
   border-color: #222231;
   font-weight: bold;
   border-style: solid;
-  border-radius: 1.5px;
+  border-radius: 50px;
+}
+
+form .todoInput input:focus, form .todoInput button:focus {
+  outline: none;
 }
 
 form .todoInput input {
@@ -47,7 +51,6 @@ form .todoInput input {
 form .todoInput button {
   cursor: pointer;
   color: #222231;
-  border-radius: 1.5px;
   -webkit-transition: all 0.3s ease;
   transition: all 0.3s ease;
 }

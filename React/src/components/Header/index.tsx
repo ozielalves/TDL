@@ -15,10 +15,10 @@ interface headerProps {
 const Header = ({setStatus, setInputText, setTodos, todos, inputText} : headerProps) => {
   return (
     <header>
-        <div className="title">
+        {/* <div className="title">
           <i className="fas fa-stream"></i>
           <h1>To Do List</h1>
-        </div>
+        </div> */}
         <p>What can't you forget to do today?</p>
         <Form 
          inputText={inputText} 

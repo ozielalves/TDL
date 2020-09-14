@@ -46,6 +46,10 @@ header .title i {
   margin: 1rem;
 }
 
+header p {
+  font-family: "Playfair Display", serif;
+}
+
 .not-blank {
   -webkit-box-shadow: 20px 12px 0px #222231;
           box-shadow: 20px 12px 0px #222231;
