@@ -13,6 +13,6 @@
 ## Protótipo do Projeto:
 
 ### Welcome
-![](https://i.imgur.com/RJAf1V5.png)
+![](https://i.imgur.com/CHdU1WN.png)
 ### Home
-![](https://i.imgur.com/ewMgK1w.png)
+![](https://i.imgur.com/rrS5qOl.png)
