@@ -1,47 +1,38 @@
-import React, { MouseEventHandler } from "react";
+import React from "react";
 
 import './styles.css';
 
 interface todoProps {
-  todoText: string;
+  text: string,
+  completed: boolean,
+  id: any,
+  todos: any,
+  setTodos: any,
 }
 
-const Todo = ({todoText} : todoProps) => {
+const Todo = ({text, completed, id, todos, setTodos} : todoProps) => {
 
-  const handleClick = (e : MouseEvent ) => {
-    const item = e.target as HTMLButtonElement;
-    
-    if(item){
-      // DELTE TODO
-      if(item.classList[0] === 'trash-btn') {
-        const todo = item.parentElement;
-        // The Event Animation
-        if(todo) {
-          todo.classList.toggle('fadeOut');
-          /* deleteLocalTodos(todo); */
-          todo.addEventListener('transitionend', () => {
-              todo.remove();
-          }); 
+  const handleDelete = () => {
+    setTodos(todos.filter((el : any) => el.id !== id));
+  }
+  const handleComplete = () => {
+    setTodos(todos.map((item : any) => {
+      if(item.id === id) {
+        return {
+          ...item, completed: !item.completed
         }
       }
-      // SET TO COMPLETED
-      if(item.classList[0] === 'complete-btn') {
-        const todo = item.parentElement;
-        if(todo) {
-          todo.classList.toggle('completed');
-        }
-      }
-    }
-    
+      return item;
+    }));
   }
 
   return (
-      <div className="todo">
-        <li className="todo-item">{todoText}</li>
-        <button className="complete-btn" onClick={() => handleClick}>
+      <div id={id} className={completed ? "todo completed" : "todo"}>
+        <li className="todo-item">{text}</li>
+        <button onClick={handleComplete} className="complete-btn">
           <i className="fas fa-check"></i>
         </button>
-        <button className="trash-btn" onClick={() => handleClick}>
+        <button onClick={handleDelete} className="trash-btn">
           <i className="fas fa-trash"></i>
         </button>
       </div>

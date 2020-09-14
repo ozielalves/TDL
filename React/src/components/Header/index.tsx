@@ -1,10 +1,18 @@
 import React from 'react';
 
-import Input from '../Input'
+import Form from '../Form'
 
 import './styles.css';
 
-const Header = () => {
+interface headerProps {
+  setInputText: any;
+  setTodos: any;
+  todos: any;
+  inputText: string,
+  setStatus: any
+}
+
+const Header = ({setStatus, setInputText, setTodos, todos, inputText} : headerProps) => {
   return (
     <header>
         <div className="title">
@@ -12,7 +20,13 @@ const Header = () => {
           <h1>To Do List</h1>
         </div>
         <p>What can't you forget to do today?</p>
-        <Input />
+        <Form 
+         inputText={inputText} 
+         setInputText={setInputText} 
+         setTodos={setTodos} 
+         todos={todos}
+         setStatus={setStatus}
+        />
     </header>
   );
 }
