@@ -10,7 +10,7 @@
 - [X] Concluir tarefa
 - [X] Recuperar tarefas acrescentadas
 
-Protótipo do Projeto:
+## Protótipo do Projeto:
 
 ### Welcome
 ![](https://i.imgur.com/RJAf1V5.png)
