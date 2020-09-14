@@ -11,6 +11,7 @@
 - [X] Recuperar tarefas acrescentadas
 - [ ] Todos Pagination
 - [ ] Transitions/Animations
+- [ ] API
 
 ## Protótipo do Projeto:
 
