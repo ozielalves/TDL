@@ -10,9 +10,9 @@
 body {
   min-height: 94vh;
   background: #2c2c2ceb; 
-  display: flex;
+/*   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: center; */
 }
 
 @media screen and (max-width: 768px) {

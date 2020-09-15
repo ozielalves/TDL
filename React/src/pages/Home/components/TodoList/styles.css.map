@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AAEA,AAAA,eAAe,CAAC;ECQZ,OAAO,EAAE,IAAI;EACb,eAAe,EAAE,MAAM;EACvB,WAAW,EAAE,MAAM;EACnB,cAAc,EDVC,GAAG;EACpB,SAAS,EAAE,CAAC;EACZ,MAAM,EAAE,MAAM;EACd,UAAU,EAAE,aAAa;CAM1B;;AAVD,AAME,eANa,CAMb,UAAU,CAAC;EACT,SAAS,EAAE,GAAG;EACd,UAAU,EAAE,IAAI;CACjB",
+    "sources": [
+        "styles.scss",
+        "../../../../props.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

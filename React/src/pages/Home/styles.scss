@@ -2,9 +2,8 @@
 
 .home {
    @include flexing(column);
-   padding: 5rem 10rem;
-   background: #2222314d;
-   margin: 2rem;
+   background: $pinkBg;
+   height: 100vh;
   
    .todo-container {
     @include flexing(row);
@@ -17,4 +16,65 @@
       list-style: none;
     }
   }
+
+  .filter {
+    @include flexing(row);
+    height: 8vh;
+    list-style-type: none;
+    margin: 1.5rem 0 0 0;
+
+    .filterBtn {
+      margin: 0 1rem;
+      padding: 1rem 1.5rem;
+      border-width: 3px;
+      border-color: white;
+      border-radius: 50px; 
+      border-style: solid;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .all {
+      &:hover{
+        background: $otherBlue;
+        border-color: $otherBlue;
+        border-style: solid;
+      }
+    }
+    .comp {
+      &:hover{
+        background: $doneShadowColor;
+        border-color: $doneShadowColor;
+        border-style: solid;
+      }
+    }
+    .to-do {
+      &:hover{
+        background: $todoShadowColor;
+        border-color: $todoShadowColor;
+        border-style: solid;
+      }
+    }
+  }
+
+  .home-logo {
+    padding: 2rem 6rem;
+    background: $logoShadowColor;
+    border-radius: 10px;  
+    .title {
+      justify-self: center;
+      display: flex;
+      padding: 1rem 0;
+      color: white; 
+      
+      i {
+          position: relative;
+          align-self: center;
+          margin: 1rem;
+      }
+    }
+  }
+  
 }

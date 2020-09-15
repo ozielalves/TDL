@@ -12,9 +12,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding: 5rem 10rem;
-  background: #2222314d;
-  margin: 2rem;
+  background: #D3B3B3;
+  height: 100vh;
 }
 
 .home .todo-container {
@@ -42,5 +41,79 @@
 .home .todo-container .todo-list {
   min-width: 30%;
   list-style: none;
+}
+
+.home .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 8vh;
+  list-style-type: none;
+  margin: 1.5rem 0 0 0;
+}
+
+.home .filter .filterBtn {
+  margin: 0 1rem;
+  padding: 1rem 1.5rem;
+  border-width: 3px;
+  border-color: white;
+  border-radius: 50px;
+  border-style: solid;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.home .filter .all:hover {
+  background: #5B7397;
+  border-color: #5B7397;
+  border-style: solid;
+}
+
+.home .filter .comp:hover {
+  background: #3dd8ad;
+  border-color: #3dd8ad;
+  border-style: solid;
+}
+
+.home .filter .to-do:hover {
+  background: #ffa500;
+  border-color: #ffa500;
+  border-style: solid;
+}
+
+.home .home-logo {
+  padding: 2rem 6rem;
+  background: #232332;
+  border-radius: 10px;
+}
+
+.home .home-logo .title {
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 0;
+  color: white;
+}
+
+.home .home-logo .title i {
+  position: relative;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
 }
 /*# sourceMappingURL=styles.css.map */

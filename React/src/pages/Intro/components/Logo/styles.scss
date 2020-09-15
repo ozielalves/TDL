@@ -1,23 +1,28 @@
-@import "../../props.scss"; 
+@import "../../../../props.scss"; 
 
-header {
+.intro-logo {
   @include flexing(column);
-  max-height: 270px;
   text-align: center;
   font-size: 1.5rem;
   box-shadow: -20px -12px 0px #222231;
   padding: 2rem;
   margin: 2rem 0 0 0;
-  transition: 1s ease;
   border-style: solid;
   border-radius: 5px;
   background: white;
-  flex-grow: 1;
   transition: all 0.5s ease;
+
+  position: absolute;
+  width: 500px;
+  height: 300px;
+  left: 10%;
+  bottom: 29%;
+  z-index: 7;
 
   .title {
     justify-self: center;
     display: flex;
+    padding: 1rem 0; 
     
     i {
         position: relative;
@@ -34,29 +39,4 @@ header {
 .not-blank{
   box-shadow: 20px 12px 0px #222231;
   border-radius: 5px;
-}
-
-@media screen and (max-width:768px) {
-
-  header {
-    font-size: 1rem;
-    padding: 2rem;
-    margin: 2rem 0 0 0;
-    box-shadow: -20px -12px 0px #222231;
-    border-radius: 5px;
-
-    .todo-input {
-        width: 150px;
-    }
-  }
-}
-
-@media screen and (max-width: 320px) {
-  header {
-    width:  230px;
-
-    .fa-stream {
-        display: none;
-    }
-  }
 }

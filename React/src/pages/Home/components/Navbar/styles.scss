@@ -1,0 +1,24 @@
+@import "../../../../props.scss"; 
+
+.intro-nav {
+  .menu{
+    @include flexing(row);
+    height: 8vh;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 1.5rem 6rem 0 0;
+  }
+
+  .sing-out, .profile {
+    margin: 0 2.5rem;
+    padding: 1rem 1.5rem;
+    color: #232332;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    
+    &:hover {
+      color: white;
+    }
+  }
+}

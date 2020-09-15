@@ -1,0 +1,63 @@
+@import '../../props.scss';
+
+#intro {
+  display: flex;
+  flex-direction: column;
+  background: $pinkBg;
+  height: 100vh;
+  overflow: hidden;
+  position: relative; 
+  
+  #bg {
+    position: absolute;
+/*     width: 1656px;
+    height: 1483px; */
+    left: -12%;
+    top: -20%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  #mt1 {
+    position: absolute;
+    width: 350px;
+    left: 9%;
+    top: 11%;
+    z-index: 1
+  }
+  #mt2 {
+    position: absolute;
+    width: 320px;
+    left: 48%;
+    top: 13%;
+    z-index: 1
+  }
+  #mt3 {
+    position: absolute;
+    width: 320px;
+    left: 53%;
+    top: 58%;
+    z-index: 1
+  }
+  #mt4 {
+    position: absolute;
+    width: 320px;
+    left: 19%;
+    top: 80%;
+    z-index: 1
+  }
+  #mt5 {
+    position: absolute;
+    width: 320px;
+    left: 72%;
+    top: 79%;
+    z-index: 1
+  }
+  #note {
+    position: absolute;
+    width: 90px;
+    left: 48%;
+    top: 40%;
+    z-index: 1
+  }
+}

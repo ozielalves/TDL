@@ -1,3 +1,55 @@
+.todo-maker {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 0px;
+  text-align: center;
+  font-size: 1.5rem;
+  -webkit-box-shadow: -20px -12px 0px #222231;
+          box-shadow: -20px -12px 0px #222231;
+  padding: 0 2rem;
+  margin: 2rem 0 0 0;
+  -webkit-transition: 1s ease;
+  transition: 1s ease;
+  border-style: solid;
+  border-radius: 5px;
+  background: white;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.todo-maker .title {
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.todo-maker .title i {
+  position: relative;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
+}
+
+.todo-maker p {
+  font-family: "Playfair Display", serif;
+}
+
 form {
   margin: 10px;
   display: -webkit-box;
@@ -46,6 +98,22 @@ form .todoInput input:focus, form .todoInput button:focus {
 
 form .todoInput input {
   margin-right: 0.3rem;
+}
+
+form .todoInput ::-webkit-input-placeholder {
+  color: #C2C2C2;
+}
+
+form .todoInput :-ms-input-placeholder {
+  color: #C2C2C2;
+}
+
+form .todoInput ::-ms-input-placeholder {
+  color: #C2C2C2;
+}
+
+form .todoInput ::placeholder {
+  color: #C2C2C2;
 }
 
 form .todoInput button {

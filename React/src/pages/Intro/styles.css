@@ -1,0 +1,72 @@
+#intro {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #D3B3B3;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+#intro #bg {
+  position: absolute;
+  /*     width: 1656px;
+    height: 1483px; */
+  left: -12%;
+  top: -20%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#intro #mt1 {
+  position: absolute;
+  width: 350px;
+  left: 9%;
+  top: 11%;
+  z-index: 1;
+}
+
+#intro #mt2 {
+  position: absolute;
+  width: 320px;
+  left: 48%;
+  top: 13%;
+  z-index: 1;
+}
+
+#intro #mt3 {
+  position: absolute;
+  width: 320px;
+  left: 53%;
+  top: 58%;
+  z-index: 1;
+}
+
+#intro #mt4 {
+  position: absolute;
+  width: 320px;
+  left: 19%;
+  top: 80%;
+  z-index: 1;
+}
+
+#intro #mt5 {
+  position: absolute;
+  width: 320px;
+  left: 72%;
+  top: 79%;
+  z-index: 1;
+}
+
+#intro #note {
+  position: absolute;
+  width: 90px;
+  left: 48%;
+  top: 40%;
+  z-index: 1;
+}
+/*# sourceMappingURL=styles.css.map */
