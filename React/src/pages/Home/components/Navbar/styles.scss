@@ -1,6 +1,8 @@
 @import "../../../../props.scss"; 
 
 .intro-nav {
+  grid-area: navbar;
+  z-index: 3;
   .menu{
     @include flexing(row);
     height: 8vh;
@@ -10,7 +12,7 @@
   }
 
   .sing-out, .profile {
-    margin: 0 2.5rem;
+    margin: 0 2rem;
     padding: 1rem 1.5rem;
     color: #232332;
     cursor: pointer;

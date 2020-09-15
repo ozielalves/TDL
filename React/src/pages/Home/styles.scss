@@ -1,15 +1,33 @@
 @import "../../props.scss";
 
 .home {
-   @include flexing(column);
-   background: $pinkBg;
-   height: 100vh;
-  
-   .todo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 10fr;
+  grid-template-areas:
+    ". navbar"
+    ". todo-list";
+  background: $pinkBg;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  transition: background 1s ease;
+
+  #bg {
+    position: absolute;
+    left: -6%;
+    top: -50%;
+    z-index: 0;
+    pointer-events: none;
+    transition: fill 1s ease;
+  }
+
+  .todo-container {
     @include flexing(row);
     flex-grow: 1;
     margin: 2rem 0;
     transition: all 0.5s ease;
+    grid-area: todo-list;
 
     .todo-list {
       min-width: 30%;
@@ -22,13 +40,16 @@
     height: 8vh;
     list-style-type: none;
     margin: 1.5rem 0 0 0;
+    position: absolute;
+    left: 10%;
+    top: 45%;
 
     .filterBtn {
       margin: 0 1rem;
       padding: 1rem 1.5rem;
       border-width: 3px;
       border-color: white;
-      border-radius: 50px; 
+      border-radius: 50px;
       border-style: solid;
       color: white;
       cursor: pointer;
@@ -37,44 +58,90 @@
     }
 
     .all {
-      &:hover{
+      &:hover {
         background: $otherBlue;
         border-color: $otherBlue;
         border-style: solid;
       }
     }
+    #selectedAll {
+      background: $otherBlue !important;
+      border-color: $otherBlue !important;
+      border-style: solid;
+    }
     .comp {
-      &:hover{
+      &:hover {
         background: $doneShadowColor;
         border-color: $doneShadowColor;
         border-style: solid;
       }
     }
+    #selectedComp {
+      background: $doneShadowColor !important;
+      border-color: $doneShadowColor !important;
+      border-style: solid;
+    }
+
     .to-do {
-      &:hover{
+      &:hover {
         background: $todoShadowColor;
         border-color: $todoShadowColor;
         border-style: solid;
       }
     }
+    #selectedTodo {
+      background: $todoShadowColor !important;
+      border-color: $todoShadowColor !important;
+      border-style: solid;
+    }
   }
 
   .home-logo {
-    padding: 2rem 6rem;
+    padding: 1rem 6rem;
     background: $logoShadowColor;
-    border-radius: 10px;  
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    bottom: -5%;
+    left: 10%;
+
     .title {
       justify-self: center;
       display: flex;
       padding: 1rem 0;
-      color: white; 
-      
+      color: white;
+
       i {
-          position: relative;
-          align-self: center;
-          margin: 1rem;
+        position: relative;
+        align-self: center;
+        margin: 1rem;
       }
     }
   }
-  
+}
+
+#appearUp {
+  transition: appearUp 1s ease-in;
+}
+
+#fadeIn {
+  transition: fadeIn 1s ease-in;
+}
+
+@keyframes appearUp {
+  0% {
+    transform: translatey(-100%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

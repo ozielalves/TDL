@@ -12,23 +12,21 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  height: 0px;
   text-align: center;
   font-size: 1.5rem;
   -webkit-box-shadow: -20px -12px 0px #222231;
           box-shadow: -20px -12px 0px #222231;
-  padding: 0 2rem;
+  padding: 2rem;
   margin: 2rem 0 0 0;
-  -webkit-transition: 1s ease;
-  transition: 1s ease;
   border-style: solid;
   border-radius: 5px;
   background: white;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  position: absolute;
+  z-index: 4;
+  left: 10%;
+  top: 3%;
 }
 
 .todo-maker .title {
@@ -170,5 +168,32 @@ select {
 select:hover {
   -webkit-box-shadow: 0px 10px 0px #ffa500;
           box-shadow: 0px 10px 0px #ffa500;
+}
+
+#appearDown {
+  -webkit-transition: appearDown 1s ease-in;
+  transition: appearDown 1s ease-in;
+}
+
+@-webkit-keyframes appearDown {
+  0% {
+    -webkit-transform: translatey(-100%);
+            transform: translatey(-100%);
+  }
+  100% {
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+}
+
+@keyframes appearDown {
+  0% {
+    -webkit-transform: translatey(-100%);
+            transform: translatey(-100%);
+  }
+  100% {
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
 }
 /*# sourceMappingURL=styles.css.map */

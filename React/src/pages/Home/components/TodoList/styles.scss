@@ -5,6 +5,7 @@
   flex-grow: 1;
   margin: 2rem 0;
   transition: all 0.5s ease;
+  z-index: 3;
 
   .todo-list {
     min-width: 30%;

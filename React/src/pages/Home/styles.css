@@ -1,19 +1,27 @@
 .home {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: 1fr 10fr;
+      grid-template-rows: 1fr 10fr;
+      grid-template-areas: ". navbar" ". todo-list";
   background: #D3B3B3;
   height: 100vh;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: background 1s ease;
+  transition: background 1s ease;
+}
+
+.home #bg {
+  position: absolute;
+  left: -6%;
+  top: -50%;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-transition: fill 1s ease;
+  transition: fill 1s ease;
 }
 
 .home .todo-container {
@@ -36,6 +44,9 @@
   margin: 2rem 0;
   -webkit-transition: all 0.5s ease;
   transition: all 0.5s ease;
+  -ms-grid-row: 2;
+  -ms-grid-column: 2;
+  grid-area: todo-list;
 }
 
 .home .todo-container .todo-list {
@@ -60,6 +71,9 @@
   height: 8vh;
   list-style-type: none;
   margin: 1.5rem 0 0 0;
+  position: absolute;
+  left: 10%;
+  top: 45%;
 }
 
 .home .filter .filterBtn {
@@ -82,9 +96,21 @@
   border-style: solid;
 }
 
+.home .filter #selectedAll {
+  background: #5B7397 !important;
+  border-color: #5B7397 !important;
+  border-style: solid;
+}
+
 .home .filter .comp:hover {
   background: #3dd8ad;
   border-color: #3dd8ad;
+  border-style: solid;
+}
+
+.home .filter #selectedComp {
+  background: #3dd8ad !important;
+  border-color: #3dd8ad !important;
   border-style: solid;
 }
 
@@ -94,10 +120,20 @@
   border-style: solid;
 }
 
+.home .filter #selectedTodo {
+  background: #ffa500 !important;
+  border-color: #ffa500 !important;
+  border-style: solid;
+}
+
 .home .home-logo {
-  padding: 2rem 6rem;
+  padding: 1rem 6rem;
   background: #232332;
   border-radius: 10px;
+  position: absolute;
+  z-index: 3;
+  bottom: -5%;
+  left: 10%;
 }
 
 .home .home-logo .title {
@@ -115,5 +151,55 @@
       -ms-grid-row-align: center;
       align-self: center;
   margin: 1rem;
+}
+
+#appearUp {
+  -webkit-transition: appearUp 1s ease-in;
+  transition: appearUp 1s ease-in;
+}
+
+#fadeIn {
+  -webkit-transition: fadeIn 1s ease-in;
+  transition: fadeIn 1s ease-in;
+}
+
+@-webkit-keyframes appearUp {
+  0% {
+    -webkit-transform: translatey(-100%);
+            transform: translatey(-100%);
+  }
+  100% {
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+}
+
+@keyframes appearUp {
+  0% {
+    -webkit-transform: translatey(-100%);
+            transform: translatey(-100%);
+  }
+  100% {
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 /*# sourceMappingURL=styles.css.map */

@@ -13,11 +13,15 @@
   transition: all 0.5s ease;
 
   position: absolute;
-  width: 500px;
-  height: 300px;
+  /* width: 500px;
+  height: 300px; */
+  width: 433px;
+  height: 217.734px;
   left: 10%;
   bottom: 29%;
   z-index: 7;
+
+  animation: float 3s ease-in-out infinite;
 
   .title {
     justify-self: center;
@@ -39,4 +43,20 @@
 .not-blank{
   box-shadow: 20px 12px 0px #222231;
   border-radius: 5px;
+}
+
+/* Animation  */
+@keyframes float {
+	0% {
+		/* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
+		transform: translatey(0px);
+	}
+	50% {
+		/* box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2); */
+		transform: translatey(-10px);
+	}
+	100% {
+		/* box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6); */
+		transform: translatey(0px);
+	}
 }

@@ -7,10 +7,10 @@ export default function Navbar () {
   return (
     <div className="intro-nav">
       <ul className="menu">
-        <Link to="/" className="profile">
+        <Link to="home" className="profile">
           Profile
         </Link>
-        <Link to="home"className="sing-out">
+        <Link to="/"className="sing-out">
           Sing out
         </Link>
       </ul>
