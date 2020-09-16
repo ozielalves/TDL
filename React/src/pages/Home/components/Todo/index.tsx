@@ -29,7 +29,7 @@ const Todo = ({text, completed, id, todos, setTodos} : todoProps) => {
   return (
       <div id={id} className={completed ? "todo completed" : "todo"}>
         <li className="todo-item">{text}</li>
-        <button onClick={handleComplete} className="complete-btn">
+        <button onClick={handleComplete} className={completed ? "complete-btn uncomplete-btn": "complete-btn"}>
           <i className="fas fa-check"></i>
         </button>
         <button onClick={handleDelete} className="trash-btn">

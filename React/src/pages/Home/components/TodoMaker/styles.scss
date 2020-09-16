@@ -34,17 +34,17 @@
 }
 
 form {
-  margin: 10px;
+  margin: 1rem 0;
   @include flexing(column);
   
   .todoInput {
     @include flexing(row);
+    margin: 1rem 0 0 0;
 
     input, button{
-      padding: 0.5rem;
       border-width: 3px;
       border-color: #222231;
-      font-weight: bold;
+      font-size: medium;
       border-style: solid;
       border-radius: 50px;
 
@@ -54,7 +54,9 @@ form {
     }
 
     input {
-      margin-right: 0.3rem;
+      margin-right: 1rem;
+      padding: 0.7rem;
+      width: 278.4px;
     }
 
     ::placeholder {
@@ -62,6 +64,7 @@ form {
     }    
 
     button {
+      padding: 0.7rem 0.8rem;
       cursor: pointer;
       color: #222231;
       transition: all 0.3s ease;
@@ -71,44 +74,6 @@ form {
           color: white;
       }
     }
-  }
-}
-
-select {
-  appearance: none;
-  outline: none;
-  border: none;
-}
-
-.select {
-  margin: 1rem;
-  position: relative;
-  overflow: hidden;
-
-  &::after {
-      content: "\25BC";
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding: 0.1rem;
-      pointer-events: none;
-      transition: all 0.3s ease;
-  }
-
-  &:hover::after {
-      color: #ffa500;
-  }
-}
-
-select {
-  padding: 0.2px;
-  width: 10rem;
-  cursor: pointer;
-  box-shadow: 0px 10px 0px #222231;
-  transition: all 0.3s ease;
-
-  &:hover {
-      box-shadow: 0px 10px 0px #ffa500;
   }
 }
 

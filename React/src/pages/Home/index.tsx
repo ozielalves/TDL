@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, MouseEventHandler } from "react";
 
 import TodoMaker from "./components/TodoMaker";
 import TodoList from "./components/TodoList";
@@ -15,12 +15,13 @@ interface todo {
 const Home = () => {
   const [inputText, setInputText] = useState<string>("");
   const [todos, setTodos] = useState<todo[]>([]);
-  const [status, setStatus] = useState<string>("all");
+  const [filter, setFilter] = useState<string>("all");
   const [filteredTodos, setFilteredTodos] = useState<todo[]>([]);
   const [rendered, setRendered] = useState<boolean>(false);
-
+  
+  // GET LOCAL TODOS
   useEffect(() => {
-    setTimeout(() => setRendered(true), 5000); 
+    setTimeout(() => setRendered(true), 3000); 
     const getLocalTodos = () => {
       if (localStorage.getItem("todos") === null) {
         localStorage.setItem("todos", JSON.stringify([]));
@@ -32,9 +33,13 @@ const Home = () => {
     getLocalTodos();
   }, []);
 
+  // SAVE TODOS LOCALY AND FILTER
   useEffect(() => {
+    const saveLocalTodos = () => {
+      localStorage.setItem("todos", JSON.stringify(todos));
+    };
     const filterHandler = () => {
-      switch (status) {
+      switch (filter) {
         case "completed":
           setFilteredTodos(todos.filter((todo) => todo.completed === true));
           break;
@@ -46,17 +51,23 @@ const Home = () => {
           break;
       }
     };
-    const saveLocalTodos = () => {
-      localStorage.setItem("todos", JSON.stringify(todos));
-    };
     filterHandler();
     saveLocalTodos();
-  }, [todos, status]);
+  }, [todos, filter]);
 
-  const filterHandler = (e: MouseEvent) => {
+  const filterClickHandler = (e: MouseEvent) => {
     const option = e.target as HTMLLIElement;
-    console.log(option.value);
-    /* setStatus(option.value); */
+    switch (option.innerText) {
+      case "COMPLETED":
+        setFilter("completed");
+        return filter;
+      case "TO DO":
+        setFilter("uncompleted");
+        return filter;
+      default:
+        setFilter("all");
+        return filter;
+    }
   };
 
   return (
@@ -70,11 +81,13 @@ const Home = () => {
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
+          id="bg-circle-1"
           d="M926 114.62C926 524.139 579.021 856.12 151 856.12C-277.021 856.12 -624 524.139 -624 114.62C-624 -294.899 -277.021 -626.88 151 -626.88C579.021 -626.88 926 -294.899 926 114.62Z"
           fill="#232332"
           fillOpacity="0.35"
         />
         <ellipse
+          id="bg-circle-2"
           cx="270.5"
           cy="58.5"
           rx="775"
@@ -89,29 +102,27 @@ const Home = () => {
         setTodos={setTodos}
         todos={todos}
         inputText={inputText}
-        setStatus={setStatus}
       />
       <div id={rendered ? "fadeIn" : "" }>
         <ul className="filter">
           <li
-            onClick={() => filterHandler}
-            id="selectedAll"
+            onClick={() => setFilter("all")}
+            id={ filter === "all" ? "selectedAll" : "" }
             className="filterBtn all"
-            value="all"
           >
             ALL
           </li>
           <li
-            onClick={() => filterHandler}
+            onClick={() => setFilter("completed")}
+            id={ filter === "completed" ? "selectedComp" : "" }
             className="filterBtn comp"
-            value="completed"
           >
             COMPLETED
           </li>
           <li
-            onClick={() => filterHandler}
+            onClick={() => setFilter("uncompleted")}
+            id={ filter === "uncompleted" ? "selectedTodo" : "" }
             className="filterBtn to-do"
-            value="all"
           >
             TO DO
           </li>

@@ -16,42 +16,22 @@
 
 .home #bg {
   position: absolute;
-  left: -6%;
-  top: -50%;
+  left: -8%;
+  top: -35%;
   z-index: 0;
   pointer-events: none;
   -webkit-transition: fill 1s ease;
   transition: fill 1s ease;
 }
 
-.home .todo-container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  margin: 2rem 0;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
-  -ms-grid-row: 2;
-  -ms-grid-column: 2;
-  grid-area: todo-list;
+.home #bg-circle-1 {
+  -webkit-animation: float 6s ease-in-out infinite;
+          animation: float 6s ease-in-out infinite;
 }
 
-.home .todo-container .todo-list {
-  min-width: 30%;
-  list-style: none;
+.home #bg-circle-2 {
+  -webkit-animation: float 8s ease-in-out infinite;
+          animation: float 8s ease-in-out infinite;
 }
 
 .home .filter {
@@ -73,7 +53,7 @@
   margin: 1.5rem 0 0 0;
   position: absolute;
   left: 10%;
-  top: 45%;
+  top: 40%;
 }
 
 .home .filter .filterBtn {
@@ -132,7 +112,7 @@
   border-radius: 10px;
   position: absolute;
   z-index: 3;
-  bottom: -5%;
+  bottom: -3%;
   left: 10%;
 }
 
@@ -200,6 +180,36 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+@-webkit-keyframes float {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-10px);
+            transform: translatey(-10px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
+
+@keyframes float {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-10px);
+            transform: translatey(-10px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
   }
 }
 /*# sourceMappingURL=styles.css.map */

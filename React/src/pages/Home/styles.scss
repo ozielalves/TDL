@@ -15,24 +15,18 @@
 
   #bg {
     position: absolute;
-    left: -6%;
-    top: -50%;
+    left: -8%;
+    top: -35%;
     z-index: 0;
     pointer-events: none;
     transition: fill 1s ease;
   }
 
-  .todo-container {
-    @include flexing(row);
-    flex-grow: 1;
-    margin: 2rem 0;
-    transition: all 0.5s ease;
-    grid-area: todo-list;
-
-    .todo-list {
-      min-width: 30%;
-      list-style: none;
-    }
+  #bg-circle-1 {
+    animation: float 6s ease-in-out infinite;
+  }
+  #bg-circle-2 {
+    animation: float 8s ease-in-out infinite;
   }
 
   .filter {
@@ -42,7 +36,7 @@
     margin: 1.5rem 0 0 0;
     position: absolute;
     left: 10%;
-    top: 45%;
+    top: 40%;
 
     .filterBtn {
       margin: 0 1rem;
@@ -102,7 +96,7 @@
     border-radius: 10px;
     position: absolute;
     z-index: 3;
-    bottom: -5%;
+    bottom: -3%;
     left: 10%;
 
     .title {
@@ -144,4 +138,16 @@
   to {
     opacity: 1;
   }
+}
+
+@keyframes float {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {
+		transform: translatey(0px);
+	}
 }

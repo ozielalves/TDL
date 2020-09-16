@@ -6,11 +6,10 @@ interface todoMakerProps {
   setInputText: any;
   setTodos: any;
   todos: any;
-  inputText: string,
-  setStatus: any
+  inputText: string
 }
 
-const TodoMaker = ({setStatus, setInputText, setTodos, todos, inputText} : todoMakerProps) => {
+const TodoMaker = ({setInputText, setTodos, todos, inputText} : todoMakerProps) => {
   
   const inputTextHandler = (e: ChangeEvent) => {
     const input = e.target as HTMLTextAreaElement;
@@ -23,11 +22,6 @@ const TodoMaker = ({setStatus, setInputText, setTodos, todos, inputText} : todoM
       ...todos, {text: inputText, completed: false, id: Math.random() * 1000 }
     ]);
     setInputText('');
-  }
-
-  const filterHandler = (e :ChangeEvent) => {
-    const option = e.target as HTMLTextAreaElement;
-    setStatus(option.value);
   }
   
   return (
@@ -46,13 +40,6 @@ const TodoMaker = ({setStatus, setInputText, setTodos, todos, inputText} : todoM
             <button className="todo-button" type="submit">
               <i className="fas fa-plus-square"></i>
             </button>
-          </div>
-          <div className="select">
-            <select onChange={filterHandler} name="todos" className="filter-todos">
-              <option value="all">All</option>
-              <option value="completed">Completed</option>
-              <option value="uncompleted">Uncompleted</option>
-            </select>
           </div>
         </form>
     </div>

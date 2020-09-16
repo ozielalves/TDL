@@ -1,10 +1,10 @@
 .todo {
-  margin: 1rem 0.5rem 0.5rem 0.5rem;
-  padding: 0.5rem;
+  margin: 0.9rem 0.5rem;
+  padding: 1rem;
   font-size: 1.2rem;
   background: #ee7600;
-  -webkit-box-shadow: 10px 8px 0px #ffa500;
-          box-shadow: 10px 8px 0px #ffa500;
+  -webkit-box-shadow: -10px -8px 0px #ffa500;
+          box-shadow: -10px -8px 0px #ffa500;
   color: white;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -15,7 +15,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  border-radius: 1.5px;
+  border-radius: 5px;
   -webkit-transition: all 1s ease;
   transition: all 1s ease;
 }
@@ -58,7 +58,15 @@
 }
 
 .todo .complete-btn:hover {
-  background-color: #5fe4be;
+  background-color: #26a17e;
+}
+
+.todo .uncomplete-btn {
+  background-color: #ffa500 !important;
+}
+
+.todo .uncomplete-btn:hover {
+  background-color: #f1d26b !important;
 }
 
 .todo .fa-trash,
@@ -67,14 +75,14 @@
 }
 
 .todo-item {
-  max-width: 770px;
+  max-width: 480px;
   overflow-wrap: break-word;
 }
 
 .completed {
   background-color: #51925a;
-  -webkit-box-shadow: -20px 12px 0px #3dd8ad;
-          box-shadow: -20px 12px 0px #3dd8ad;
+  -webkit-box-shadow: -10px 12px 0px #3dd8ad;
+          box-shadow: -10px 12px 0px #3dd8ad;
   text-decoration: line-through;
   opacity: 0.6;
 }

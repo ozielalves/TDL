@@ -1,8 +1,8 @@
 @import "../../../../props.scss"; 
 
 .todo {
-  margin: 1rem 0.5rem 0.5rem 0.5rem;
-  padding: 0.5rem;
+  margin: 0.9rem 0.5rem;
+  padding: 1rem;
   font-size: 1.2rem;
   background: #ee7600;
   box-shadow: $todoShadow;
@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-radius: 1.5px;
+  border-radius: 5px;
   transition: all 1s ease;
 
   li {
@@ -42,9 +42,16 @@
   }
 
   .complete-btn {
-    background-color: #3dd8ad;
+    background-color: $doneShadowColor;
     &:hover {
-      background-color: rgb(95, 228, 190);
+      background-color: rgb(38, 161, 126);
+    }
+  }
+
+  .uncomplete-btn{
+    background-color: $todoShadowColor !important;
+    &:hover {
+      background-color: rgb(241, 210, 107) !important;
     }
   }
 
@@ -55,7 +62,7 @@
 }
 
 .todo-item {
-  max-width: 770px;
+  max-width: 480px;
   overflow-wrap: break-word;
 }
 
