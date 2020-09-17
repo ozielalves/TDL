@@ -1,3 +1,93 @@
+<!--<template>
+   <div class="home">
+    <svg
+      id="bg"
+      width="1046"
+      height="857"
+      viewBox="0 0 1046 857"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="bg-circle-1"
+        d="M926 114.62C926 524.139 579.021 856.12 151 856.12C-277.021 856.12 -624 524.139 -624 114.62C-624 -294.899 -277.021 -626.88 151 -626.88C579.021 -626.88 926 -294.899 926 114.62Z"
+        fill="#232332"
+        fillOpacity="0.35"
+      />
+      <ellipse
+        id="bg-circle-2"
+        cx="270.5"
+        cy="58.5"
+        rx="775"
+        ry="741.5"
+        fill="#232332"
+        fillOpacity="0.35"
+      />
+    </svg>
+    <Navbar />
+    <TodoMaker
+      setInputText={setInputText}
+      setTodos={setTodos}
+      todos={todos}
+      inputText={inputText}
+    />
+    <div id={rendered ? "fadeIn" : "" }>
+      <ul class="filter">
+        <li
+          onClick={() => setFilter("all")}
+          id={ filter === "all" ? "selectedAll" : "" }
+          class="filterBtn all"
+        >
+          ALL
+        </li>
+        <li
+          onClick={() => setFilter("completed")}
+          id={ filter === "completed" ? "selectedComp" : "" }
+          class="filterBtn comp"
+        >
+          COMPLETED
+        </li>
+        <li
+          onClick={() => setFilter("uncompleted")}
+          id={ filter === "uncompleted" ? "selectedTodo" : "" }
+          class="filterBtn to-do"
+        >
+          TO DO
+        </li>
+      </ul>
+    </div>
+    <TodoList
+      todos={todos}
+      filteredTodos={filteredTodos}
+      setTodos={setTodos}
+    />
+    <div id={rendered ? "appearUp" : "" } class="home-logo">
+      <div class="title">
+        <i class="fas fa-stream"></i>
+        <h1>To Do List</h1>
+      </div>
+    </div>
+  </div> 
+</template>-->
+
+<script>
+import Navbar from './components/Navbar';
+import Todo from './components/Todo';
+import TodoList from './components/TodoList';
+import TodoMaker from './components/TodoMaker';
+
+export default {
+  name: 'Home',
+  'components': {
+    Navbar,
+    Todo,
+    TodoList,
+    TodoMaker
+  }
+}
+</script>
+
+<style lang="scss">
 @import "../../props.scss";
 
 .home {
@@ -152,3 +242,5 @@
 		transform: translatey(0px);
 	}
 }
+
+</style>

@@ -1,7 +1,8 @@
 .todo {
+  font-size: 1.1rem;
+  /* max-width: 78%; */
   margin: 0.9rem 0.5rem;
   padding: 1rem;
-  font-size: 1.2rem;
   background: #ee7600;
   -webkit-box-shadow: -10px -8px 0px #ffa500;
           box-shadow: -10px -8px 0px #ffa500;
@@ -20,11 +21,13 @@
   transition: all 1s ease;
 }
 
-.todo li {
+.todo .todo-item {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
   margin: 0 1rem;
+  max-width: 350px;
+  overflow-wrap: break-word;
 }
 
 .todo .trash-btn,
@@ -72,11 +75,6 @@
 .todo .fa-trash,
 .todo .fa-check {
   pointer-events: none;
-}
-
-.todo-item {
-  max-width: 480px;
-  overflow-wrap: break-word;
 }
 
 .completed {

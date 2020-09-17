@@ -5,12 +5,13 @@
   transition: all 0.5s ease;
   z-index: 3;
   grid-area: todo-list;
+  width: 100%;
 
   .todo-list {
     @include flexing(column);
     justify-content: flex-start;
     align-items: flex-start;
-    min-width: 40%;
     list-style: none;
+    width: 100%;
   }
 }

@@ -1,4 +1,38 @@
-@import '../../props.scss';
+<template>
+  <div id="intro" class={{ hoverBg ? 'hoverBg' : '' }}>
+    <svg id="bg" width="1000" height="1000" viewBox="0 0 1069 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <ellipse class={ hoverBg ? "hoveredCircle" : "" } cx="294" cy="518.5" rx="775" ry="741.5" fill={ hoverBg ? "#ffffff" : "#232332" } fillOpacity="0.35"/>
+      <ellipse cx="188" cy="518.5" rx="775" ry="741.5" fill={hoverBg ? "#ffffff" : "#232332"} fillOpacity="0.35"/>
+    </svg>
+    <img id="mt1" src="../../assets/Moving-todo-1.svg" alt="animation"/>
+    <img id="mt2" src="../../assets/Moving-todo-2.svg" alt="animation"/>
+    <img id="mt3" src="../../assets/Moving-todo-3.svg" alt="animation"/>
+    <img id="mt4" src="../../assets/Moving-todo-4.svg" alt="animation"/>
+    <img id="mt5" src="../../assets/Moving-todo-5.svg" alt="animation"/>
+    <img id="note" src="../../assets/note.svg" alt="animation" />
+    <Navbar handleHover={{handleHover}} hoverBg={hoverBg} />
+    <LogoWrapper />
+  </div>
+</template>
+
+<script>
+import Navbar from './components/Navbar';
+import LogoWrapper from './components/LogoWrapper';
+
+export default {
+  'name': 'Intro',
+  'components': {
+    Navbar,
+    LogoWrapper
+  },
+  data: {
+    hoverBg: false
+  }
+}
+</script>
+
+<style lang="scss">
+@import '../props.scss';
 
 #intro {
   display: flex;
@@ -109,4 +143,4 @@
 		transform: translatex(0%);
 	}
 }
-
+</style>
