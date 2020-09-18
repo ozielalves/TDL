@@ -37,8 +37,6 @@ export default {
 	},
 	plugins: [
 		svelte({
-			// hudrate to never brake the router
-			hydratable: true,
 			// enable run-time checks when not in production
 			dev: !production,
 			// we'll extract any component CSS out into

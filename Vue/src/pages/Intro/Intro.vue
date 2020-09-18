@@ -1,5 +1,5 @@
 <template>
-  <!-- <div id="intro" class={{ hoverBg ? 'hoverBg' : '' }}>
+  <div id="intro" class={{ hoverBg ? 'hoverBg' : '' }}>
     <svg id="bg" width="1000" height="1000" viewBox="0 0 1069 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
       <ellipse class={ hoverBg ? "hoveredCircle" : "" } cx="294" cy="518.5" rx="775" ry="741.5" fill={ hoverBg ? "#ffffff" : "#232332" } fillOpacity="0.35"/>
       <ellipse cx="188" cy="518.5" rx="775" ry="741.5" fill={hoverBg ? "#ffffff" : "#232332"} fillOpacity="0.35"/>
@@ -12,8 +12,7 @@
     <img id="note" src="../../assets/note.svg" alt="animation" />
     <Navbar handleHover={{handleHover}} hoverBg={hoverBg} />
     <LogoWrapper />
-  </div> -->
-  <div id="intro"></div>
+  </div>
 </template>
 
 <script>
