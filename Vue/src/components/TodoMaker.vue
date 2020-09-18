@@ -1,93 +1,34 @@
 <template>
-  <div class="todo-maker">
+  <div className="todo-maker">
     <p>What can't you forget to do today?</p>
-    <form v-on:submit="handleSubmit">
-      <div class="todoInput">
-        <input
-          v-model="todoInput"
-          v-on:change="inputTextHandler"
-          type="text"
-          class="todo-input"
-          placeholder="Complete my todos"
+    <form v:on:submit="handleSubmit">
+      <div className="todoInput">
+<!--         <input 
+          v:bind:value={inputText} 
+          onChange={inputTextHandler} 
+          type="text" 
+          className="todo-input" 
+          placeholder="Complete my todos" 
           required
-        />
-        <button class="todo-button" type="submit">
-          <i class="fas fa-plus-square"></i>
+        /> -->
+        <button className="todo-button" type="submit">
+          <i className="fas fa-plus-square"></i>
         </button>
       </div>
     </form>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { Vue } from "vue-class-component";
-import { Component, Prop } from "vue-property-decorator";
-
-class Todo {
-  id: number;
-  text: string;
-  done: boolean;
-
-  constructor(todo: string) {
-    this.id = Math.random() * 1000;
-    this.text = todo;
-    this.done = false;
-  }
-
-  toggleDone() {
-    this.done = !this.done;
-  }
-}
-
-export default class TodoMaker extends Vue {
-  todoInput = "";
-  todos: Todo[] = [];
-  filteredTodos = [
-    {
-      id: 10001,
-      text: "That's a todo",
-      done: false,
-    },
-    {
-      id: 10002,
-      text: "That's another todo",
-      done: true,
-    },
-    {
-      id: 10003,
-      text: "That's another todo",
-      done: false,
-    },
-    {
-      id: 10004,
-      text: "That's the last todo",
-      done: false,
-    },
-  ];
-
-  handleSubmit() {
-    const todo = new Todo(this.todoInput);
-    this.todos.push(todo);
-  }
-
-  /* inputTextHandler = (e: ChangeEvent) => {
-  const input = e.target as HTMLTextAreaElement;
-  setInputText(input.value); 
-}
-
-handleSubmit = (e: FormEvent) => {
-  e.preventDefault();
-  setTodos([
-    ...todos, {text: inputText, completed: false, id: Math.random() * 1000 }
-  ]);
-  setInputText('');
-} */
-}
+export default class TodoMaker extends Vue {}
 
 // Functions
+
 </script>
 
 <style lang="scss">
+
 .todo-maker {
   display: flex;
   flex-direction: column;
@@ -110,17 +51,18 @@ handleSubmit = (e: FormEvent) => {
   .title {
     justify-self: center;
     display: flex;
-
+    
     i {
-      position: relative;
-      align-self: center;
-      margin: 1rem;
+        position: relative;
+        align-self: center;
+        margin: 1rem;
     }
   }
 
   p {
     font-family: "Playfair Display", serif;
   }
+
 }
 
 form {
@@ -129,15 +71,14 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
+  
   .todoInput {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1rem 0 0 0;
 
-    input,
-    button {
+    input, button{
       border-width: 3px;
       border-color: #222231;
       font-size: medium;
@@ -156,18 +97,18 @@ form {
     }
 
     ::placeholder {
-      color: #c2c2c2;
-    }
+      color: #C2C2C2;
+    }    
 
     button {
       padding: 0.7rem 0.8rem;
       cursor: pointer;
       color: #222231;
       transition: all 0.3s ease;
-
+      
       &:hover {
-        background: #222231;
-        color: white;
+          background: #222231;
+          color: white;
       }
     }
   }
