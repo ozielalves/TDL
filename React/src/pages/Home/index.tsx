@@ -1,4 +1,4 @@
-import React, { useState, useEffect, MouseEventHandler } from "react";
+import React, { useState, useEffect } from "react";
 
 import TodoMaker from "./components/TodoMaker";
 import TodoList from "./components/TodoList";
@@ -54,21 +54,6 @@ const Home = () => {
     filterHandler();
     saveLocalTodos();
   }, [todos, filter]);
-
-  const filterClickHandler = (e: MouseEvent) => {
-    const option = e.target as HTMLLIElement;
-    switch (option.innerText) {
-      case "COMPLETED":
-        setFilter("completed");
-        return filter;
-      case "TO DO":
-        setFilter("uncompleted");
-        return filter;
-      default:
-        setFilter("all");
-        return filter;
-    }
-  };
 
   return (
     <div className="home">
