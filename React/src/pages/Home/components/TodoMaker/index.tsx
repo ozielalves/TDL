@@ -26,22 +26,22 @@ const TodoMaker = ({setInputText, setTodos, todos, inputText} : todoMakerProps) 
   
   return (
     <div className="todo-maker">
-        <p>What can't you forget to do today?</p>
-        <form onSubmit={handleSubmit}>
-          <div className="todoInput">
-            <input 
-              value={inputText} 
-              onChange={inputTextHandler} 
-              type="text" 
-              className="todo-input" 
-              placeholder="Complete my todos" 
-              required
-            />
-            <button className="todo-button" type="submit">
-              <i className="fas fa-plus-square"></i>
-            </button>
-          </div>
-        </form>
+      <p>What can't you forget to do today?</p>
+      <form onSubmit={handleSubmit}>
+        <div className="todoInput">
+          <input 
+            value={inputText} 
+            onChange={inputTextHandler} 
+            type="text" 
+            className="todo-input" 
+            placeholder="Complete my todos" 
+            required
+          />
+          <button className="todo-button" type="submit">
+            <i className="fas fa-plus-square"></i>
+          </button>
+        </div>
+      </form>
     </div>
   );
 }

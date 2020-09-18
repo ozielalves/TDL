@@ -3,15 +3,10 @@
   padding: 0;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
   /* font-family: "Playfair Display", serif; */
 }
 
 body {
-  min-height: 94vh;
-  background: #2c2c2ceb; 
-/*   display: flex;
-  align-items: center;
-  justify-content: center; */
+  font-family: 'Montserrat', sans-serif;
 }
 

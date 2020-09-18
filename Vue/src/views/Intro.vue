@@ -1,43 +1,40 @@
 <template>
-  <div id="intro" class={{ hoverBg ? 'hoverBg' : '' }}>
+  <div id="intro" class="intro">
+    <Navbar />
     <svg id="bg" width="1000" height="1000" viewBox="0 0 1069 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse class={ hoverBg ? "hoveredCircle" : "" } cx="294" cy="518.5" rx="775" ry="741.5" fill={ hoverBg ? "#ffffff" : "#232332" } fillOpacity="0.35"/>
-      <ellipse cx="188" cy="518.5" rx="775" ry="741.5" fill={hoverBg ? "#ffffff" : "#232332"} fillOpacity="0.35"/>
+      <ellipse className="" cx="294" cy="518.5" rx="775" ry="741.5" fill="#232332" fill-opacity="0.35"/>
+      <ellipse cx="188" cy="518.5" rx="775" ry="741.5" fill="#232332" fill-opacity="0.35"/>
     </svg>
-    <img id="mt1" src="../../assets/Moving-todo-1.svg" alt="animation"/>
-    <img id="mt2" src="../../assets/Moving-todo-2.svg" alt="animation"/>
-    <img id="mt3" src="../../assets/Moving-todo-3.svg" alt="animation"/>
-    <img id="mt4" src="../../assets/Moving-todo-4.svg" alt="animation"/>
-    <img id="mt5" src="../../assets/Moving-todo-5.svg" alt="animation"/>
-    <img id="note" src="../../assets/note.svg" alt="animation" />
-    <Navbar handleHover={{handleHover}} hoverBg={hoverBg} />
+    <img id="mt1" alt="animation" src="../assets/Moving-todo-1.svg" />
+    <img id="mt2" alt="animation" src="../assets/Moving-todo-2.svg" />
+    <img id="mt3" alt="animation" src="../assets/Moving-todo-3.svg" />
+    <img id="mt4" alt="animation" src="../assets/Moving-todo-4.svg" />
+    <img id="mt5" alt="animation" src="../assets/Moving-todo-5.svg" />
+    <img id="note" alt="animation" src="../assets/note.svg" />
     <LogoWrapper />
   </div>
 </template>
 
-<script>
-import Navbar from './components/Navbar';
-import LogoWrapper from './components/LogoWrapper';
+<script lang="ts">
+import { Options, Vue } from "vue-class-component";
+import Navbar from "@/components/Navbar.vue";
+import LogoWrapper from "@/components/LogoWrapper.vue"
 
-export default {
-  'name': 'Intro',
-  'components': {
+@Options({
+  components: {
     Navbar,
     LogoWrapper
-  },
-  data: {
-    hoverBg: false
   }
-}
+})
+export default class Intro extends Vue {}
 </script>
 
 <style lang="scss">
-@import '../props.scss';
 
 #intro {
   display: flex;
   flex-direction: column;
-  background: $pinkBg;
+  background: #D3B3B3;
   height: 100vh;
   overflow: hidden;
   position: relative; 
@@ -107,7 +104,7 @@ export default {
 }
 
 .hoverBg {
-    background: $logoShadowColor !important;
+    background: #232332 !important;
   }
 
 @keyframes goAway {
@@ -143,4 +140,5 @@ export default {
 		transform: translatex(0%);
 	}
 }
+
 </style>
