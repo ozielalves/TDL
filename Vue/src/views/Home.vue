@@ -3,11 +3,27 @@ import { Options, Vue } from "vue-class-component";
 import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
 
+class Todo {
+  id: number;
+  text: string;
+  done: boolean;
+  
+  constructor(inputText) {
+    id: Math.random() * 1000;
+    text: inputText;
+    done: false;
+  }
+
+}
+
 @Options({
   components: {
     HomeNav,
     TodoMaker
-  }
+  }, 
+  data(): () => ({
+    todos: Todo[],
+  })
 })
 export default class Home extends Vue {}
 
@@ -49,25 +65,25 @@ export default class Home extends Vue {}
         inputText={inputText}
       /> -->
       <div>
-        <ul className="filter">
+        <ul class="filter">
           <!-- <li
             onClick={() => setFilter("all")}
             id={ filter === "all" ? "selectedAll" : "" }
-            className="filterBtn all"
+            class="filterBtn all"
           >
             ALL
           </li>
           <li
             onClick={() => setFilter("completed")}
             id={ filter === "completed" ? "selectedComp" : "" }
-            className="filterBtn comp"
+            class="filterBtn comp"
           >
             COMPLETED
           </li>
           <li
             onClick={() => setFilter("uncompleted")}
             id={ filter === "uncompleted" ? "selectedTodo" : "" }
-            className="filterBtn to-do"
+            class="filterBtn to-do"
           >
             TO DO
           </li> -->
@@ -78,9 +94,9 @@ export default class Home extends Vue {}
         filteredTodos={filteredTodos}
         setTodos={setTodos}
       /> -->
-      <div className="home-logo">
-        <div className="title">
-          <i className="fas fa-stream"></i>
+      <div class="home-logo">
+        <div class="title">
+          <i class="fas fa-stream"></i>
           <h1>To Do List</h1>
         </div>
       </div>

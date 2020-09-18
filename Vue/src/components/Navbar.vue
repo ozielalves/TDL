@@ -4,12 +4,16 @@
       <router-link
         to="/"
         class="sing-up"
+        @mouseover="$emit('update:hovered', !hovered)"
+        @mouseleave="$emit('update:hovered', !hovered)"
       >
         SING UP
       </router-link>
       <router-link
         to="home"
-        class="sing-in"
+        :class="hovered?'sing-in hoveredBtn':'sing-in'"
+        @mouseover="$emit('update:hovered', !hovered)"
+        @mouseleave="$emit('update:hovered', !hovered)"
       >
         SING IN
       </router-link>
@@ -18,14 +22,21 @@
 </template>
 
 <script>
-import { Vue } from "vue-class-component";
-export default class Navbar extends Vue {}
+import Vue from "vue";
 
+export default {
+  name: "NavBar",
+  props: {
+    hovered: {
+      type: Boolean,
+      default: false,
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 .intro-nav {
-  
   .menu {
     display: flex;
     flex-direction: row;
@@ -41,16 +52,16 @@ export default class Navbar extends Vue {}
     padding: 1rem 1.5rem;
     border-width: 3px;
     border-color: #232332;
-    border-radius: 50px; 
+    border-radius: 50px;
     border-style: solid;
     color: #232332;
     cursor: pointer;
     transition: all 0.5s ease;
     text-decoration: none;
-    
+
     &:hover {
-      background: #232332;
-      border-color: #232332;
+      background:  #ee7600;
+      border-color: #ee7600;
       color: white;
     }
 
@@ -61,24 +72,19 @@ export default class Navbar extends Vue {}
 
   .sing-up {
     padding: 1rem 1.5rem;
-    background: #6D6069;
+    background: #6d6069;
     border-radius: 50px;
-    border-color: #6D6069;
+    border-color: #6d6069;
     border-style: solid;
-    color: white; 
+    color: white;
     cursor: pointer;
     transition: all 0.5s ease;
     text-decoration: none;
-   
-    &:hover {
-      background: #232332;
-      border-color: #232332;
-    }
   }
 
-  .hoveredBTn {
+  .hoveredBtn {
     color: white;
+    border-color: white;
   }
-
 }
 </style>

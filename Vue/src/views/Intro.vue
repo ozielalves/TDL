@@ -1,9 +1,31 @@
 <template>
-  <div id="intro" class="intro">
-    <Navbar />
-    <svg id="bg" width="1000" height="1000" viewBox="0 0 1069 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <ellipse className="" cx="294" cy="518.5" rx="775" ry="741.5" fill="#232332" fill-opacity="0.35"/>
-      <ellipse cx="188" cy="518.5" rx="775" ry="741.5" fill="#232332" fill-opacity="0.35"/>
+  <div id="intro" :class="hoverSingIn ? 'intro hoverBg' : 'intro'">
+    <Navbar v-model:hovered="hoverSingIn" />
+    <svg
+      id="bg"
+      width="1000"
+      height="1000"
+      viewBox="0 0 1069 1024"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <ellipse
+        :class="hoverSingIn ? 'hoveredCircle' : ''"
+        cx="294"
+        cy="518.5"
+        rx="775"
+        ry="741.5"
+        :fill="hoverSingIn ? '#ffffff' : '#232332'"
+        fill-opacity="0.35"
+      />
+      <ellipse
+        cx="188"
+        cy="518.5"
+        rx="775"
+        ry="741.5"
+        :fill="hoverSingIn ? '#ffffff' : '#232332'"
+        fill-opacity="0.35"
+      />
     </svg>
     <img id="mt1" alt="animation" src="../assets/Moving-todo-1.svg" />
     <img id="mt2" alt="animation" src="../assets/Moving-todo-2.svg" />
@@ -15,29 +37,36 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { Options, Vue } from "vue-class-component";
 import Navbar from "@/components/Navbar.vue";
-import LogoWrapper from "@/components/LogoWrapper.vue"
+import LogoWrapper from "@/components/LogoWrapper.vue";
 
 @Options({
   components: {
     Navbar,
-    LogoWrapper
-  }
+    LogoWrapper,
+  },
+  methods: {
+    handleHover: () => {
+      this.hoverSingIn = !this.hoverSingIn;
+    },
+  },
+  data: () => ({
+    hoverSingIn: false,
+  }),
 })
 export default class Intro extends Vue {}
 </script>
 
 <style lang="scss">
-
 #intro {
   display: flex;
   flex-direction: column;
-  background: #D3B3B3;
+  background: #d3b3b3;
   height: 100vh;
   overflow: hidden;
-  position: relative; 
+  position: relative;
   transition: background 1s ease;
 
   #bg {
@@ -104,41 +133,40 @@ export default class Intro extends Vue {}
 }
 
 .hoverBg {
-    background: #232332 !important;
-  }
+  background: #232332 !important;
+}
 
 @keyframes goAway {
   0% {
-		transform: translatex(0%);
+    transform: translatex(0%);
   }
   50% {
     transform: translatex(10%);
-  }  
-	100% {
-		transform: translatex(0%);
-	}
+  }
+  100% {
+    transform: translatex(0%);
+  }
 }
 @keyframes goAwayReduced {
   0% {
-		transform: translatex(0%);
+    transform: translatex(0%);
   }
   50% {
     transform: translatex(-10%);
-  }  
-	100% {
-		transform: translatex(0%);
-	}
+  }
+  100% {
+    transform: translatex(0%);
+  }
 }
 @keyframes dance {
   0% {
-		transform: translatex(0%);
+    transform: translatex(0%);
   }
   50% {
     transform: translatex(-10%);
-  }  
-	100% {
-		transform: translatex(0%);
-	}
+  }
+  100% {
+    transform: translatex(0%);
+  }
 }
-
 </style>

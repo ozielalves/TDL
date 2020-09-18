@@ -7,12 +7,12 @@ export default class Todo extends Vue {}
 </script>
 
 <template>
-  <div id={id} class={completed ? "todo completed" : "todo"}>
+  <div id={id} :class="completed ? 'todo completed' : 'todo'">
     <li class="todo-item">{{text}}</li>
-    <button onClick={handleComplete} class={completed ? "complete-btn uncomplete-btn": "complete-btn"}>
+    <button @click="handleComplete" :class="completed ? 'complete-btn uncomplete-btn': 'complete-btn'">
       <i class="fas fa-check"></i>
     </button>
-    <button onClick={handleDelete} class="trash-btn">
+    <button @click="handleDelete" class="trash-btn">
       <i class="fas fa-trash"></i>
     </button>
   </div>

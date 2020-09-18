@@ -1,18 +1,18 @@
 <template>
-  <div className="todo-maker">
+  <div class="todo-maker">
     <p>What can't you forget to do today?</p>
-    <form v:on:submit="handleSubmit">
-      <div className="todoInput">
-<!--         <input 
-          v:bind:value={inputText} 
-          onChange={inputTextHandler} 
+    <form @submit="handleSubmit">
+      <div class="todoInput">
+        <input 
+          v-model="inputText" 
+          @change="inputTextHandler" 
           type="text" 
-          className="todo-input" 
+          class="todo-input" 
           placeholder="Complete my todos" 
           required
-        /> -->
-        <button className="todo-button" type="submit">
-          <i className="fas fa-plus-square"></i>
+        />
+        <button class="todo-button" type="submit">
+          <i class="fas fa-plus-square"></i>
         </button>
       </div>
     </form>
@@ -20,7 +20,21 @@
 </template>
 
 <script>
-import { Vue } from "vue-class-component";
+import { Options, Vue } from "vue-class-component";
+
+@Options({
+  methods: {
+    handleHover: () => {
+      this.hoverSingIn = !this.hoverSingIn;
+    },
+  },
+  data: () => ({
+    hoverSingIn: false,
+    inputText: '',
+    
+  }),
+})
+
 export default class TodoMaker extends Vue {}
 
 // Functions
