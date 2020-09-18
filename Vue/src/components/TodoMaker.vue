@@ -5,10 +5,10 @@
       <div class="todoInput">
         <input
           v-model="todoInput"
-          v-on:change="inputTextHandler" 
-          type="text" 
-          class="todo-input" 
-          placeholder="Complete my todos" 
+          v-on:change="inputTextHandler"
+          type="text"
+          class="todo-input"
+          placeholder="Complete my todos"
           required
         />
         <button class="todo-button" type="submit">
@@ -23,34 +23,54 @@
 import { Vue } from "vue-class-component";
 import { Component, Prop } from "vue-property-decorator";
 
-
 class Todo {
-  id: any;
-  todo: string;
+  id: number;
+  text: string;
   done: boolean;
 
   constructor(todo: string) {
-    this.id = Math.random() *1000;
-    this.todo = todo;
+    this.id = Math.random() * 1000;
+    this.text = todo;
     this.done = false;
   }
 
-  toggleDone () {
+  toggleDone() {
     this.done = !this.done;
   }
 }
 
 export default class TodoMaker extends Vue {
+  todoInput = "";
+  todos: Todo[] = [];
+  filteredTodos = [
+    {
+      id: 10001,
+      text: "That's a todo",
+      done: false,
+    },
+    {
+      id: 10002,
+      text: "That's another todo",
+      done: true,
+    },
+    {
+      id: 10003,
+      text: "That's another todo",
+      done: false,
+    },
+    {
+      id: 10004,
+      text: "That's the last todo",
+      done: false,
+    },
+  ];
 
-todoInput = '';
-todos: Todo[] = [];
+  handleSubmit() {
+    const todo = new Todo(this.todoInput);
+    this.todos.push(todo);
+  }
 
-handleSubmit () {
-  const todo = new Todo(this.todoInput)
-  this.todos.push(todo);
-}
-
-/* inputTextHandler = (e: ChangeEvent) => {
+  /* inputTextHandler = (e: ChangeEvent) => {
   const input = e.target as HTMLTextAreaElement;
   setInputText(input.value); 
 }
@@ -62,15 +82,12 @@ handleSubmit = (e: FormEvent) => {
   ]);
   setInputText('');
 } */
-  
 }
 
 // Functions
-
 </script>
 
 <style lang="scss">
-
 .todo-maker {
   display: flex;
   flex-direction: column;
@@ -93,18 +110,17 @@ handleSubmit = (e: FormEvent) => {
   .title {
     justify-self: center;
     display: flex;
-    
+
     i {
-        position: relative;
-        align-self: center;
-        margin: 1rem;
+      position: relative;
+      align-self: center;
+      margin: 1rem;
     }
   }
 
   p {
     font-family: "Playfair Display", serif;
   }
-
 }
 
 form {
@@ -113,14 +129,15 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   .todoInput {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1rem 0 0 0;
 
-    input, button{
+    input,
+    button {
       border-width: 3px;
       border-color: #222231;
       font-size: medium;
@@ -139,18 +156,18 @@ form {
     }
 
     ::placeholder {
-      color: #C2C2C2;
-    }    
+      color: #c2c2c2;
+    }
 
     button {
       padding: 0.7rem 0.8rem;
       cursor: pointer;
       color: #222231;
       transition: all 0.3s ease;
-      
+
       &:hover {
-          background: #222231;
-          color: white;
+        background: #222231;
+        color: white;
       }
     }
   }
