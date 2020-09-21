@@ -1,29 +1,21 @@
 <template>
   <div class="todo-container">
-      <ul class="todo-list">
-        <!-- {filteredTodos.map( (todo : any) => (
-          <Todo
-            key={todo.id} 
-            id={todo.id} 
-            text={todo.text} 
-            completed={todo.completed}
-            todos = {todos}
-            setTodos={setTodos}
-          />
-        ))} -->
-      </ul>
-    </div>
+    <ul class="todo-list" :key="todo.id" v-for="todo in todos">
+      <Todo :todo="todo" />
+    </ul>
+  </div>
 </template>
 
 <script>
+import Todo from "./Todo.vue";
 
-import { Vue } from "vue-class-component";
-export default class TodoList extends Vue {}
-
+export default {
+  name: "TodoList",
+  props: ["todos"],
+};
 </script>
 
 <style lang="scss">
-
 .todo-container {
   margin: 2rem 0;
   transition: all 0.5s ease;
@@ -40,5 +32,4 @@ export default class TodoList extends Vue {}
     width: 100%;
   }
 }
-
 </style>

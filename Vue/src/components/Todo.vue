@@ -1,15 +1,17 @@
 <script>
-import { Vue } from "vue-class-component";
-export default class Todo extends Vue {}
+export default {
+  name: "Todos",
+  props: ["todo"]
+}
 
 // Functions
 
 </script>
 
 <template>
-  <div id={id} :class="completed ? 'todo completed' : 'todo'">
+  <div id="todo.id" :class="todo.done ? 'todo completed' : 'todo'">
     <li class="todo-item">{{text}}</li>
-    <button @click="handleComplete" :class="completed ? 'complete-btn uncomplete-btn': 'complete-btn'">
+    <button @click="handleComplete" :class="todo.done ? 'complete-btn uncomplete-btn': 'complete-btn'">
       <i class="fas fa-check"></i>
     </button>
     <button @click="handleDelete" class="trash-btn">

@@ -3,12 +3,11 @@
     <p>What can't you forget to do today?</p>
     <form @submit="handleSubmit">
       <div class="todoInput">
-        <input 
-          v-model="inputText" 
-          @change="inputTextHandler" 
-          type="text" 
-          class="todo-input" 
-          placeholder="Complete my todos" 
+        <input
+          v-model.lazy="inputText"
+          type="text"
+          class="todo-input"
+          placeholder="Complete my todos"
           required
         />
         <button class="todo-button" type="submit">
@@ -20,29 +19,38 @@
 </template>
 
 <script>
-import { Options, Vue } from "vue-class-component";
-
-@Options({
-  methods: {
-    handleHover: () => {
-      this.hoverSingIn = !this.hoverSingIn;
-    },
+export default {
+  name: "TodoMaker",
+  props: {
+    todos: [],
+    inputText: ""
   },
-  data: () => ({
+  methods: {
+    inputTextHandler: e => {
+      console.log(this.inputText);
+    },
+    handleSubmit: e => {
+      e.preventDefault();
+      console.log(this.inputText);
+      e.$emit("update:todos", ...todos, {
+        id: Math.random() * 1000,
+        text: inputText,
+        completed: false
+      });
+    }
+  }
+  /*   data: () => ({
     hoverSingIn: false,
-    inputText: '',
-    
-  }),
-})
+    inputText: "",
+  }), */
+};
 
-export default class TodoMaker extends Vue {}
+/* export default class TodoMaker extends Vue {} */
 
 // Functions
-
 </script>
 
 <style lang="scss">
-
 .todo-maker {
   display: flex;
   flex-direction: column;
@@ -65,18 +73,17 @@ export default class TodoMaker extends Vue {}
   .title {
     justify-self: center;
     display: flex;
-    
+
     i {
-        position: relative;
-        align-self: center;
-        margin: 1rem;
+      position: relative;
+      align-self: center;
+      margin: 1rem;
     }
   }
 
   p {
     font-family: "Playfair Display", serif;
   }
-
 }
 
 form {
@@ -85,14 +92,15 @@ form {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  
+
   .todoInput {
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 1rem 0 0 0;
 
-    input, button{
+    input,
+    button {
       border-width: 3px;
       border-color: #222231;
       font-size: medium;
@@ -111,18 +119,18 @@ form {
     }
 
     ::placeholder {
-      color: #C2C2C2;
-    }    
+      color: #c2c2c2;
+    }
 
     button {
       padding: 0.7rem 0.8rem;
       cursor: pointer;
       color: #222231;
       transition: all 0.3s ease;
-      
+
       &:hover {
-          background: #222231;
-          color: white;
+        background: #222231;
+        color: white;
       }
     }
   }

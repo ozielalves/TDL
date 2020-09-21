@@ -47,11 +47,11 @@ import LogoWrapper from "@/components/LogoWrapper.vue";
     Navbar,
     LogoWrapper,
   },
-  methods: {
+/*   methods: {
     handleHover: () => {
       this.hoverSingIn = !this.hoverSingIn;
     },
-  },
+  }, */
   data: () => ({
     hoverSingIn: false,
   }),

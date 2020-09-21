@@ -2,29 +2,48 @@
 import { Options, Vue } from "vue-class-component";
 import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
+import Todo from '@/components/Todo.vue';
+import TodoList from '@/components/TodoList.vue';
 
-class Todo {
+/* class Todo {
   id: number;
   text: string;
   done: boolean;
   
   constructor(inputText) {
-    id: Math.random() * 1000;
-    text: inputText;
-    done: false;
+    this.id: Math.random() * 1000;
+    this.text: inputText;
+    this.done: false;
   }
 
-}
+} */
 
 @Options({
-  components: {
+components: {
     HomeNav,
     TodoMaker
   }, 
-  data(): () => ({
-    todos: Todo[],
-  })
+  data: () => ({
+    todos: [
+      {
+        id: 1,
+        text: "Todo One",
+        done: false
+      },
+      {
+        id: 1,
+        text: "Todo two",
+        done: false
+      },
+      {
+        id: 1,
+        text: "Todo Three",
+        done: false
+      },
+    ],
+  }),
 })
+
 export default class Home extends Vue {}
 
 </script>
@@ -56,43 +75,44 @@ export default class Home extends Vue {}
         />
       </svg>
       <HomeNav />
-      <TodoMaker />
+      <TodoMaker v-model:todos="todos" />
 <!--       <Navbar />
       <TodoMaker
-        setInputText={setInputText}
-        setTodos={setTodos}
-        todos={todos}
-        inputText={inputText}
+        :setInputText={setInputText}
+        :setTodos={setTodos}
+        :todos={todos}
+        :inputText={inputText}
       /> -->
       <div>
         <ul class="filter">
           <!-- <li
-            onClick={() => setFilter("all")}
-            id={ filter === "all" ? "selectedAll" : "" }
+            @click="() => setFilter('all')"
+            id=" filter === 'all' ? 'selectedAll' : ' "
             class="filterBtn all"
           >
             ALL
           </li>
           <li
-            onClick={() => setFilter("completed")}
-            id={ filter === "completed" ? "selectedComp" : "" }
+            @click="() => setFilter('completed')"
+            id=" filter === 'completed' ? 'selectedComp' : ' "
             class="filterBtn comp"
           >
             COMPLETED
           </li>
           <li
-            onClick={() => setFilter("uncompleted")}
-            id={ filter === "uncompleted" ? "selectedTodo" : "" }
+            @click="() => setFilter('uncompleted')"
+            id=" filter === 'uncompleted' ? 'selectedTodo' : ' "
             class="filterBtn to-do"
           >
             TO DO
           </li> -->
         </ul>
       </div>
+      <TodoList :todos="todos"/>
       <!-- <TodoList
-        todos={todos}
-        filteredTodos={filteredTodos}
-        setTodos={setTodos}
+        :todos="todos"
+        :filteredTodos="filteredTodos"
+        :setTodos="setTodos"
       /> -->
       <div class="home-logo">
         <div class="title">
