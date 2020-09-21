@@ -4,7 +4,7 @@
     <form @submit="handleSubmit">
       <div class="todoInput">
         <input
-          v-model.lazy="inputText"
+          v-model="inputText"
           type="text"
           class="todo-input"
           placeholder="Complete my todos"
@@ -19,30 +19,31 @@
 </template>
 
 <script>
+import uuid from 'uuid';
 export default {
   name: "TodoMaker",
-  props: {
-    todos: [],
-    inputText: ""
-  },
   methods: {
-    inputTextHandler: e => {
+    inputTextHandler: (e) => {
       console.log(this.inputText);
     },
-    handleSubmit: e => {
+    handleSubmit: (e) => {
       e.preventDefault();
-      console.log(this.inputText);
-      e.$emit("update:todos", ...todos, {
-        id: Math.random() * 1000,
-        text: inputText,
-        completed: false
-      });
+      const newTodo = {
+        id: uuid.v4(),
+        text: this.inputText,
+        completed: false,
+      }
+      // SEND UP TO PARENT
+      this.$emit("add-todo", newTodo);
+      // CLEAR INPUT
+      this.inputText = "";
+    },
+  },
+  data() {
+    return {
+      inputText: ''
     }
   }
-  /*   data: () => ({
-    hoverSingIn: false,
-    inputText: "",
-  }), */
 };
 
 /* export default class TodoMaker extends Vue {} */

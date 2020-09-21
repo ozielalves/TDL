@@ -1,27 +1,35 @@
 <script>
 export default {
   name: "Todos",
-  props: ["todo"]
-}
+  props: [
+    "todo",
+  ] /* ,
+  methods: {
+    handleComplete: () => {
+      this.todo.completed = !this.todo.completed;
+    }
+  } */,
+};
 
 // Functions
-
 </script>
 
 <template>
-  <div id="todo.id" :class="todo.done ? 'todo completed' : 'todo'">
-    <li class="todo-item">{{text}}</li>
-    <button @click="handleComplete" :class="todo.done ? 'complete-btn uncomplete-btn': 'complete-btn'">
+  <div id="todo.id" :class="todo.completed ? 'todo completed' : 'todo'">
+    <li class="todo-item">{{ todo.text }}</li>
+    <button
+      @click="$emit('handle-complete', todo.id)"
+      :class="todo.completed ? 'complete-btn uncomplete-btn' : 'complete-btn'"
+    >
       <i class="fas fa-check"></i>
     </button>
-    <button @click="handleDelete" class="trash-btn">
+    <button @click="$emit('handle-delete', todo.id)" class="trash-btn">
       <i class="fas fa-trash"></i>
     </button>
   </div>
 </template>
 
 <style lang="scss">
-
 .todo {
   font-size: 1.1rem;
   margin: 0.9rem 0.5rem;
@@ -72,7 +80,7 @@ export default {
     }
   }
 
-  .uncomplete-btn{
+  .uncomplete-btn {
     background-color: #ffa500 !important;
     &:hover {
       background-color: rgb(241, 210, 107) !important;
@@ -97,16 +105,15 @@ export default {
   opacity: 0;
 }
 
-@media screen and (max-width:768px) {
-
+@media screen and (max-width: 768px) {
   .todo {
-      max-width: 330px;
+    max-width: 330px;
 
-      .todo-item {
-          font-size: 1rem;
-          max-width: 235px;
-          overflow-wrap: break-word;
-      }
+    .todo-item {
+      font-size: 1rem;
+      max-width: 235px;
+      overflow-wrap: break-word;
+    }
   }
 }
 </style>

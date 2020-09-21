@@ -1,7 +1,11 @@
 <template>
   <div class="todo-container">
-    <ul class="todo-list" :key="todo.id" v-for="todo in todos">
-      <Todo :todo="todo" />
+    <ul class="todo-list" v-bind:key="todo.id" v-for="todo in todos">
+      <Todo
+        :todo="todo"
+        v-on:handle-delete="$emit('handle-delete', todo.id)"
+        v-on:handle-complete="$emit('handle-compete', todo.id)"
+      />
     </ul>
   </div>
 </template>
@@ -12,6 +16,9 @@ import Todo from "./Todo.vue";
 export default {
   name: "TodoList",
   props: ["todos"],
+  components: {
+    Todo
+  }
 };
 </script>
 

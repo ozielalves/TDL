@@ -1,126 +1,166 @@
-<script lang="ts">
+<script>
 import { Options, Vue } from "vue-class-component";
+import axios from "axios";
 import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
-import Todo from '@/components/Todo.vue';
-import TodoList from '@/components/TodoList.vue';
+import TodoList from "@/components/TodoList.vue";
 
-/* class Todo {
-  id: number;
-  text: string;
-  done: boolean;
-  
-  constructor(inputText) {
-    this.id: Math.random() * 1000;
-    this.text: inputText;
-    this.done: false;
-  }
-
-} */
-
-@Options({
-components: {
+export default {
+  name: "Home",
+  components: {
     HomeNav,
-    TodoMaker
-  }, 
-  data: () => ({
-    todos: [
-      {
-        id: 1,
-        text: "Todo One",
-        done: false
-      },
-      {
-        id: 1,
-        text: "Todo two",
-        done: false
-      },
-      {
-        id: 1,
-        text: "Todo Three",
-        done: false
-      },
-    ],
-  }),
-})
+    TodoMaker,
+    TodoList,
+  },
+  data() {
+    return {
+      todos: [
+        {
+          id: 1,
+          text: "Todo One",
+          completed: false,
+        },
+        {
+          id: 1,
+          text: "Todo two",
+          completed: false,
+        },
+        {
+          id: 1,
+          text: "Todo Three",
+          completed: false,
+        },
+      ],
+      filteredTodos: this.todos,
+      filter: "all",
+    };
+  },
+  methods: {
+    handleDelete: (id) => {
+      /* this.todos = this.todos.filter(todo => todo.id !== id); */
+      axios
+        .delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
+        .then(
+          (res) => (this.todos = this.todos.filter((todo) => todo.id !== id))
+        )
+        .catch((err) => console.log(err));
+    },
+    handleComplete: (id) => {
+      this.todos.map((todo) => {
+        if (todo.id === id) {
+          todo.completed = !todo.completed;
+        }
+      });
+    },
+    addTodo: (newTodo) => {
+      const { text, completed } = newTodo;
+      axios
+        .post("http://jsonplaceholder.typicode.com/todos", {
+          title: text,
+          completed,
+        })
+        .then((res) => (this.todos = [...this.todos, res.data]))
+        .catch((err) => console.log(err));
+      /* this.todos = [...this.todos, newTodo]; */
+    },
+    created: () => {
+      axios
+        .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
+        .then((res) => (this.todos = res.data))
+        .catch((err) => console.log(err));
+    },
+    setFilter: (filter) => {
+      console.log(filter);
+      switch (filter) {
+        case "completed":
+          this.filter = "completed";
+          this.filteredTodos = this.filteredTodos.filter(
+            (todo) => todo.completed !== false
+          );
+          break;
+        case "uncompleted":
+          this.filter = "uncompleted";
+          this.filteredTodos = this.filteredTodos.filter(
+            (todo) => todo.completed === false
+          );
+          break;
+        default:
+          this.filter = "all";
+          this.filteredTodos = this.todos;
+          break;
+      }
+    },
+  },
+};
 
-export default class Home extends Vue {}
-
+/* export default class Home extends Vue {} */
 </script>
 
 <template>
   <div class="home">
     <svg
-        id="bg"
-        width="1046"
-        height="857"
-        viewBox="0 0 1046 857"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          id="bg-circle-1"
-          d="M926 114.62C926 524.139 579.021 856.12 151 856.12C-277.021 856.12 -624 524.139 -624 114.62C-624 -294.899 -277.021 -626.88 151 -626.88C579.021 -626.88 926 -294.899 926 114.62Z"
-          fill="#232332"
-          fill-opacity="0.35"
-        />
-        <ellipse
-          id="bg-circle-2"
-          cx="270.5"
-          cy="58.5"
-          rx="775"
-          ry="741.5"
-          fill="#232332"
-          fill-opacity="0.35"
-        />
-      </svg>
-      <HomeNav />
-      <TodoMaker v-model:todos="todos" />
-<!--       <Navbar />
-      <TodoMaker
-        :setInputText={setInputText}
-        :setTodos={setTodos}
-        :todos={todos}
-        :inputText={inputText}
-      /> -->
-      <div>
-        <ul class="filter">
-          <!-- <li
-            @click="() => setFilter('all')"
-            id=" filter === 'all' ? 'selectedAll' : ' "
-            class="filterBtn all"
-          >
-            ALL
-          </li>
-          <li
-            @click="() => setFilter('completed')"
-            id=" filter === 'completed' ? 'selectedComp' : ' "
-            class="filterBtn comp"
-          >
-            COMPLETED
-          </li>
-          <li
-            @click="() => setFilter('uncompleted')"
-            id=" filter === 'uncompleted' ? 'selectedTodo' : ' "
-            class="filterBtn to-do"
-          >
-            TO DO
-          </li> -->
-        </ul>
-      </div>
-      <TodoList :todos="todos"/>
-      <!-- <TodoList
-        :todos="todos"
-        :filteredTodos="filteredTodos"
-        :setTodos="setTodos"
-      /> -->
-      <div class="home-logo">
-        <div class="title">
-          <i class="fas fa-stream"></i>
-          <h1>To Do List</h1>
-        </div>
+      id="bg"
+      width="1046"
+      height="857"
+      viewBox="0 0 1046 857"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        id="bg-circle-1"
+        d="M926 114.62C926 524.139 579.021 856.12 151 856.12C-277.021 856.12 -624 524.139 -624 114.62C-624 -294.899 -277.021 -626.88 151 -626.88C579.021 -626.88 926 -294.899 926 114.62Z"
+        fill="#232332"
+        fill-opacity="0.35"
+      />
+      <ellipse
+        id="bg-circle-2"
+        cx="270.5"
+        cy="58.5"
+        rx="775"
+        ry="741.5"
+        fill="#232332"
+        fill-opacity="0.35"
+      />
+    </svg>
+    <HomeNav />
+    <TodoMaker v-on:add-todo="addTodo" />
+    <div>
+      <ul class="filter">
+        <li
+          @click="setFilter('all')"
+          :id="filter === 'all' ? 'selectedAll' : ''"
+          class="filterBtn all"
+        >
+          ALL
+        </li>
+        <li
+          @click="setFilter('completed')"
+          :id="filter === 'completed' ? 'selectedComp' : ''"
+          class="filterBtn comp"
+        >
+          COMPLETED
+        </li>
+        <li
+          @click="setFilter('uncompleted')"
+          :id="filter === 'uncompleted' ? 'selectedTodo' : ''"
+          class="filterBtn to-do"
+        >
+          TO DO
+        </li>
+      </ul>
+    </div>
+    <TodoList
+      v-bind:todos="todos"
+      v-on:handle-delete="handleDelete"
+      v-on:handle-complete="handleComplete"
+    />
+    <div class="home-logo">
+      <div class="title">
+        <i class="fas fa-stream"></i>
+        <h1>To Do List</h1>
       </div>
     </div>
+  </div>
 </template>
 
 <style lang="scss">
@@ -131,7 +171,7 @@ export default class Home extends Vue {}
   grid-template-areas:
     ". navbar"
     ". todo-list";
-  background: #D3B3B3;
+  background: #d3b3b3;
   height: 100vh;
   overflow: hidden;
   position: relative;
@@ -180,14 +220,14 @@ export default class Home extends Vue {}
 
     .all {
       &:hover {
-        background: #5B7397;
-        border-color: #5B7397;
+        background: #5b7397;
+        border-color: #5b7397;
         border-style: solid;
       }
     }
     #selectedAll {
-      background: #5B7397 !important;
-      border-color: #5B7397 !important;
+      background: #5b7397 !important;
+      border-color: #5b7397 !important;
       border-style: solid;
     }
     .comp {
@@ -269,14 +309,14 @@ export default class Home extends Vue {}
 }
 
 @keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-10px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-10px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }
 </style>
