@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { Options, Vue } from "vue-class-component";
 import axios from "axios";
 import HomeNav from "@/components/HomeNav.vue";
@@ -12,7 +12,7 @@ export default {
     TodoMaker,
     TodoList,
   },
-  data() {
+  data: function() {
     return {
       todos: [
         {
@@ -23,7 +23,7 @@ export default {
         {
           id: 1,
           text: "Todo two",
-          completed: false,
+          completed: true,
         },
         {
           id: 1,
@@ -36,41 +36,42 @@ export default {
     };
   },
   methods: {
-    handleDelete: (id) => {
-      /* this.todos = this.todos.filter(todo => todo.id !== id); */
-      axios
+    handleDelete(id) {
+      console.log(id);
+      this.todos = this.todos.filter(todo => todo.id !== id);
+     /*  axios
         .delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
         .then(
           (res) => (this.todos = this.todos.filter((todo) => todo.id !== id))
         )
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err)); */
     },
-    handleComplete: (id) => {
+    handleComplete(id) {
+      console.log(id);
       this.todos.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
       });
     },
-    addTodo: (newTodo) => {
-      const { text, completed } = newTodo;
+    addTodo(newTodo) {
+      /* const { text, completed } = newTodo;
       axios
         .post("http://jsonplaceholder.typicode.com/todos", {
           title: text,
           completed,
         })
         .then((res) => (this.todos = [...this.todos, res.data]))
-        .catch((err) => console.log(err));
-      /* this.todos = [...this.todos, newTodo]; */
+        .catch((err) => console.log(err)); */
+      this.todos = [...this.todos, newTodo];
     },
-    created: () => {
+    created() {
       axios
         .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
         .then((res) => (this.todos = res.data))
         .catch((err) => console.log(err));
     },
-    setFilter: (filter) => {
-      console.log(filter);
+    setFilter(filter) {
       switch (filter) {
         case "completed":
           this.filter = "completed";
@@ -150,7 +151,7 @@ export default {
       </ul>
     </div>
     <TodoList
-      v-bind:todos="todos"
+      v-bind:todos="filteredTodos"
       v-on:handle-delete="handleDelete"
       v-on:handle-complete="handleComplete"
     />

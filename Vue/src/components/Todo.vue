@@ -2,7 +2,7 @@
 export default {
   name: "Todos",
   props: [
-    "todo",
+    "todo"
   ] /* ,
   methods: {
     handleComplete: () => {

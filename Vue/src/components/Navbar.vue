@@ -37,6 +37,7 @@ export default {
 
 <style lang="scss">
 .intro-nav {
+  z-index: 99;
   .menu {
     display: flex;
     flex-direction: row;

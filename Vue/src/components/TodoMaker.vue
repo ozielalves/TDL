@@ -4,7 +4,7 @@
     <form @submit="handleSubmit">
       <div class="todoInput">
         <input
-          v-model="inputText"
+          v-model="this.inputText"
           type="text"
           class="todo-input"
           placeholder="Complete my todos"
@@ -19,7 +19,6 @@
 </template>
 
 <script>
-import uuid from 'uuid';
 export default {
   name: "TodoMaker",
   methods: {
@@ -29,7 +28,7 @@ export default {
     handleSubmit: (e) => {
       e.preventDefault();
       const newTodo = {
-        id: uuid.v4(),
+        id: Math.random * 1000,
         text: this.inputText,
         completed: false,
       }
@@ -39,9 +38,9 @@ export default {
       this.inputText = "";
     },
   },
-  data() {
+  data: function () {
     return {
-      inputText: ''
+      inputText: ""
     }
   }
 };

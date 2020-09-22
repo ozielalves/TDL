@@ -27,7 +27,7 @@ export default class HomeNav extends Vue {}
 
 .home-nav {
   grid-area: navbar;
-  z-index: 3;
+  z-index: 10;
   .menu{
     display: flex;
     align-items: center;
