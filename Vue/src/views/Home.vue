@@ -14,8 +14,8 @@ export default {
   },
   data: function() {
     return {
-      todos: [
-        {
+      todos: [],
+        /* {
           id: 1,
           text: "Todo One",
           completed: false,
@@ -30,12 +30,20 @@ export default {
           text: "Todo Three",
           completed: false,
         },
-      ],
+      ], */
       filteredTodos: this.todos,
       filter: "all",
     };
   },
   methods: {
+    async created() {
+      console.log('Component has been created');
+      await axios
+        .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
+        .then((res) => (this.todos = res.data))
+        .then(() => this.filteredTodos = this.todos)
+        .catch((err) => console.log(err));
+    },
     handleDelete(id) {
       console.log(id);
       this.todos = this.todos.filter(todo => todo.id !== id);
@@ -64,12 +72,6 @@ export default {
         .then((res) => (this.todos = [...this.todos, res.data]))
         .catch((err) => console.log(err)); */
       this.todos = [...this.todos, newTodo];
-    },
-    created() {
-      axios
-        .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
-        .then((res) => (this.todos = res.data))
-        .catch((err) => console.log(err));
     },
     setFilter(filter) {
       switch (filter) {
