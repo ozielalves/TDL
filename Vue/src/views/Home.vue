@@ -5,6 +5,13 @@ import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
 import TodoList from "@/components/TodoList.vue";
 
+interface Todo {
+  userId: number,
+  id: number,
+  title: string,
+  completed: boolean
+}
+
 export default {
   name: "Home",
   components: {
@@ -12,9 +19,9 @@ export default {
     TodoMaker,
     TodoList,
   },
-  data: function() {
+  data() {
     return {
-      todos: [],
+      todos: [] as Todo[],
         /* {
           id: 1,
           text: "Todo One",
@@ -31,19 +38,20 @@ export default {
           completed: false,
         },
       ], */
-      filteredTodos: this.todos,
-      filter: "all",
+      filteredTodos: this.todos as Todo[],
+      filter: "all" as string,
     };
   },
-  methods: {
-    async created() {
+  created() {
       console.log('Component has been created');
-      await axios
+      axios
         .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
         .then((res) => (this.todos = res.data))
         .then(() => this.filteredTodos = this.todos)
         .catch((err) => console.log(err));
-    },
+  },
+  methods: {
+    
     handleDelete(id) {
       console.log(id);
       this.todos = this.todos.filter(todo => todo.id !== id);
