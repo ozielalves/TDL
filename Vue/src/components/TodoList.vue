@@ -4,7 +4,7 @@
       <Todo
         :todo="todo"
         v-on:handle-delete="$emit('handle-delete', todo.id)"
-        v-on:handle-complete="$emit('handle-compete', todo.id)"
+        v-on:handle-complete="$emit('handle-complete', todo.id)"
       />
     </ul>
   </div>

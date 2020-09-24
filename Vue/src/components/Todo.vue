@@ -15,7 +15,7 @@ export default {
 </script>
 
 <template>
-  <div id="todo.id" :class="todo.completed ? 'todo completed' : 'todo'">
+  <div :id="'td' + todo.id" :class="todo.completed ? 'todo completed' : 'todo'">
     <li class="todo-item">{{ todo.title }}</li>
     <button
       @click="$emit('handle-complete', todo.id)"

@@ -22,7 +22,7 @@ export default {
   data() {
     return {
       todos: [] /* as Todo[] */,
-        /* {
+      /* {
           id: 1,
           text: "Todo One",
           completed: false,
@@ -39,59 +39,97 @@ export default {
         },
       ], */
       filteredTodos: [] /* as Todo[] */,
-      filter: "all"/*  as string */,
+      filter: "all" /*  as string */,
     };
   },
   created() {
-      console.log('Component has been created');
-      axios
-        .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
-        .then((res) => (this.todos = res.data))
-        .then(() => this.filteredTodos = this.todos)
-        .catch((err) => console.log(err));
+    axios
+      .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then((res) => (this.todos = res.data))
+      .then(() => (this.filteredTodos = this.todos))
+      .catch((err) => console.log(err));
   },
   methods: {
-    
     handleDelete(id) {
-      console.log(id);
+      /* console.log(id);
       this.todos = this.todos.filter(todo => todo.id !== id);
-     /*  axios
+      this.setFilter(this.filter); */
+      axios
         .delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
         .then(
           (res) => (this.todos = this.todos.filter((todo) => todo.id !== id))
         )
-        .catch((err) => console.log(err)); */
+        .then(this.todoFadeAway(id))
+        .catch((err) => console.log(err));
+    },
+    todoFadeAway(id) {
+      const todo = document.getElementById(`td${id}`);
+      todo.classList.toggle("fadeOut");
+      todo.addEventListener("transitionend", () => {
+        todo.remove();
+        this.setFilter(this.filter);
+      });
     },
     handleComplete(id) {
       console.log(id);
+      /* console.log(id);
       this.todos.map((todo) => {
         if (todo.id === id) {
           todo.completed = !todo.completed;
         }
-      });
+      }); */
+      let completed;
+      axios
+        .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
+        .then((res) => (completed = res.data.completed))
+        .catch((err) => console.log(err));
+      console.log(completed);
+      axios
+        .put(`http://jsonplaceholder.typicode.com/todos/${id}`, {
+          completed: !completed,
+        })
+        .then(this.todoToggleCompleted(id, completed))
+        .catch((err) => console.log(err));
+    },
+    todoToggleCompleted(id, completed) {
+      const todo = document.getElementById(`td${id}`);
+      const completeBtn = document.querySelector(`#td${id} .complete-btn`);
+      if (completed === true) {
+        todo.classList.add("completed");
+        completeBtn.classList.add("uncomplete-btn");
+        todo.addEventListener("transitionend", () => {
+          this.setFilter(this.filter);
+        });
+      } else {
+        todo.classList.remove("completed");
+        completeBtn.classList.remove("uncomplete-btn");
+        todo.addEventListener("transitionend", () => {
+          this.setFilter(this.filter);
+        });
+      }
     },
     addTodo(newTodo) {
-      /* const { text, completed } = newTodo;
+      const { title, completed } = newTodo;
       axios
         .post("http://jsonplaceholder.typicode.com/todos", {
-          title: text,
+          title,
           completed,
         })
         .then((res) => (this.todos = [...this.todos, res.data]))
-        .catch((err) => console.log(err)); */
-      this.todos = [...this.todos, newTodo];
+        .catch((err) => console.log(err));
+      /* this.todos = [...this.todos, newTodo]; */
     },
     setFilter(filter) {
       switch (filter) {
         case "completed":
           this.filter = "completed";
-          this.filteredTodos = this.filteredTodos.filter(
+          this.filteredTodos = this.todos.filter(
             (todo) => todo.completed !== false
           );
           break;
         case "uncompleted":
           this.filter = "uncompleted";
-          this.filteredTodos = this.filteredTodos.filter(
+          this.filteredTodos = this.todos.filter(
             (todo) => todo.completed === false
           );
           break;

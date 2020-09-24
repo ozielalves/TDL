@@ -4,7 +4,8 @@
     <form @submit="handleSubmit">
       <div class="todoInput">
         <input
-          v-model="this.inputText"
+          v-model="inputText"
+          @change="inputTextHandler"
           type="text"
           class="todo-input"
           placeholder="Complete my todos"
@@ -21,6 +22,11 @@
 <script>
 export default {
   name: "TodoMaker",
+  data() {
+    return {
+      inputText: ""
+    }
+  },
   methods: {
     inputTextHandler: (e) => {
       console.log(this.inputText);
@@ -29,7 +35,7 @@ export default {
       e.preventDefault();
       const newTodo = {
         id: Math.random * 1000,
-        text: this.inputText,
+        title: this.inputText,
         completed: false,
       }
       // SEND UP TO PARENT
@@ -38,11 +44,6 @@ export default {
       this.inputText = "";
     },
   },
-  data: function () {
-    return {
-      inputText: ""
-    }
-  }
 };
 
 /* export default class TodoMaker extends Vue {} */
