@@ -28,15 +28,14 @@ export default {
     }
   },
   methods: {
-    inputTextHandler: (e) => {
+    inputTextHandler() {
       console.log(this.inputText);
     },
-    handleSubmit: (e) => {
+    handleSubmit(e) {
       e.preventDefault();
       const newTodo = {
-        id: Math.random * 1000,
         title: this.inputText,
-        completed: false,
+        completed: false
       }
       // SEND UP TO PARENT
       this.$emit("add-todo", newTodo);

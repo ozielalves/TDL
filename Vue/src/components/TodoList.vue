@@ -3,8 +3,8 @@
     <ul class="todo-list" v-bind:key="todo.id" v-for="todo in todos">
       <Todo
         :todo="todo"
-        v-on:handle-delete="$emit('handle-delete', todo.id)"
-        v-on:handle-complete="$emit('handle-complete', todo.id)"
+        @handle-delete="$emit('handle-delete', todo.id)"
+        @handle-complete="$emit('handle-complete', todo.id)"
       />
     </ul>
   </div>

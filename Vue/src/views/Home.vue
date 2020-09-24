@@ -78,18 +78,19 @@ export default {
           todo.completed = !todo.completed;
         }
       }); */
-      let completed;
       axios
         .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
-        .then((res) => (completed = res.data.completed))
-        .catch((err) => console.log(err));
-      console.log(completed);
-      axios
-        .put(`http://jsonplaceholder.typicode.com/todos/${id}`, {
-          completed: !completed,
-        })
-        .then(this.todoToggleCompleted(id, completed))
-        .catch((err) => console.log(err));
+        .then((res) => {
+          const completed = !res.data.completed;
+          console.log(completed)
+          axios
+            .put(`http://jsonplaceholder.typicode.com/todos/${id}`, {
+              completed,
+            })
+            .then(this.todoToggleCompleted(id, completed))
+            .catch((err) => console.log(err));
+            })
+            .catch((err) => console.log(err));
     },
     todoToggleCompleted(id, completed) {
       const todo = document.getElementById(`td${id}`);
@@ -110,12 +111,14 @@ export default {
     },
     addTodo(newTodo) {
       const { title, completed } = newTodo;
+      console.log(newTodo);
       axios
         .post("http://jsonplaceholder.typicode.com/todos", {
           title,
           completed,
         })
-        .then((res) => (this.todos = [...this.todos, res.data]))
+        .then((res) => (this.todos = [res.data,...this.todos]))
+        .then(this.setFilter(this.filter))
         .catch((err) => console.log(err));
       /* this.todos = [...this.todos, newTodo]; */
     },
@@ -172,7 +175,7 @@ export default {
       />
     </svg>
     <HomeNav />
-    <TodoMaker v-on:add-todo="addTodo" />
+    <TodoMaker @add-todo="addTodo" />
     <div>
       <ul class="filter">
         <li
@@ -199,9 +202,9 @@ export default {
       </ul>
     </div>
     <TodoList
-      v-bind:todos="filteredTodos"
-      v-on:handle-delete="handleDelete"
-      v-on:handle-complete="handleComplete"
+      :todos="filteredTodos"
+      @handle-delete="handleDelete"
+      @handle-complete="handleComplete"
     />
     <div class="home-logo">
       <div class="title">
