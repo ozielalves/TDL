@@ -1,17 +1,17 @@
-<script lang="ts">
+<script>
 import { Options, Vue } from "vue-class-component";
 import axios from "axios";
 import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
 import TodoList from "@/components/TodoList.vue";
-
+/* 
 interface Todo {
   userId: number,
   id: number,
   title: string,
   completed: boolean
 }
-
+ */
 export default {
   name: "Home",
   components: {
@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      todos: [] as Todo[],
+      todos: [] /* as Todo[] */,
         /* {
           id: 1,
           text: "Todo One",
@@ -38,8 +38,8 @@ export default {
           completed: false,
         },
       ], */
-      filteredTodos: this.todos as Todo[],
-      filter: "all" as string,
+      filteredTodos: [] /* as Todo[] */,
+      filter: "all"/*  as string */,
     };
   },
   created() {
