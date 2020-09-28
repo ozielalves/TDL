@@ -1,0 +1,20 @@
+<div className="intro-nav">
+  <ul className="menu">
+    <Link
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHover}
+      to="/"
+      className="sing-up"
+    >
+      SING UP
+    </Link>
+    <Link
+      onMouseEnter={handleHover}
+      onMouseLeave={handleHover}
+      to="home"
+      className={hoverBg ? "sing-in hoveredBtn" : "sing-in"}
+    >
+      SING IN
+    </Link>
+  </ul>
+</div>
