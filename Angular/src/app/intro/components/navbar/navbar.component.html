@@ -1,20 +1,24 @@
 <div className="intro-nav">
   <ul className="menu">
-    <Link
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}
-      to="/"
+    <li>
+      <a 
       className="sing-up"
-    >
-      SING UP
-    </Link>
-    <Link
-      onMouseEnter={handleHover}
-      onMouseLeave={handleHover}
-      to="home"
-      className={hoverBg ? "sing-in hoveredBtn" : "sing-in"}
-    >
-      SING IN
-    </Link>
+      routerLink="intro"
+      (mouseenter)="handleHover.emit()"
+      (mouseleave)="handleHover.emit()"
+      >
+        SING UP
+      </a>
+    </li>
+    <li>
+      <a 
+      [className]="hoverBg ? 'sing-in hoveredBtn' : 'sing-in'"
+      routerLink="home"
+      (mouseenter)="handleHover.emit()"
+      (mouseleave)="handleHover.emit()"
+      >
+        SING IN
+      </a>
+    </li>
   </ul>
 </div>

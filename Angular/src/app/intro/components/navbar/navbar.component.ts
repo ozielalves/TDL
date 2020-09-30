@@ -1,7 +1,7 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'navbarcomponent',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
@@ -13,6 +13,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  @Input() handleHover: void;
+  /* @Input() handleHover: void; */
+  @Output() handleHover = new EventEmitter()
   
 }
