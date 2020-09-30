@@ -1,0 +1,24 @@
+<div class="intro-nav">
+  <ul class="menu">
+    <li>
+      <a 
+      class="sing-up"
+      routerLink="../intro"
+      (mouseenter)="hover.emit()"
+      (mouseleave)="hover.emit()"
+      >
+        SING UP
+      </a>
+    </li>
+    <li>
+      <a 
+      class="{{hoverBg ? 'sing-in hoveredBtn' : 'sing-in'}}"
+      routerLink="../home"
+      (mouseenter)="hover.emit()"
+      (mouseleave)="hover.emit()"
+      >
+        SING IN
+      </a>
+    </li>
+  </ul>
+</div>

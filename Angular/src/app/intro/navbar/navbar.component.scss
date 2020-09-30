@@ -1,12 +1,17 @@
-@import "../../../props.scss"; 
+@import "../../props.scss"; 
 
 .intro-nav {
-  .menu{
+  z-index: 99;
+  .menu {
     @include flexing(row);
     height: 8vh;
     justify-content: flex-end;
     list-style-type: none;
     margin: 1.5rem 6rem 0 0;
+
+    li {
+      display: flex;
+    }
   }
 
   .sing-in {
@@ -22,8 +27,8 @@
     text-decoration: none;
     
     &:hover {
-      background: #232332;
-      border-color: #232332;
+      background:  #ee7600;
+      border-color: #ee7600;
       color: white;
     }
 
@@ -42,15 +47,11 @@
     cursor: pointer;
     transition: all 0.5s ease;
     text-decoration: none;
-   
-    &:hover {
-      background: #232332;
-      border-color: #232332;
-    }
   }
 
   .hoveredBtn {
     color: white;
+    border-color: white;
   }
 
 }

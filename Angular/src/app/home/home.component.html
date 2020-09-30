@@ -1,1 +1,83 @@
-<p>home works!</p>
+<div class="home">
+  <svg
+    id="bg"
+    width="1046"
+    height="857"
+    viewBox="0 0 1046 857"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      id="bg-circle-1"
+      d="M926 114.62C926 524.139 579.021 856.12 151 856.12C-277.021 856.12 -624 524.139 -624 114.62C-624 -294.899 -277.021 -626.88 151 -626.88C579.021 -626.88 926 -294.899 926 114.62Z"
+      fill="#232332"
+      fill-opacity="0.35"
+    />
+    <ellipse
+      id="bg-circle-2"
+      cx="270.5"
+      cy="58.5"
+      rx="775"
+      ry="741.5"
+      fill="#232332"
+      fill-opacity="0.35"
+    />
+  </svg>
+  <div class="home-nav">
+    <ul class="menu">
+      <li>
+        <a 
+        class="profile"
+        routerLink="../home"
+        >
+          Profile
+        </a>
+      </li>
+      <li>
+        <a 
+        class="sing-out"
+        routerLink="../intro"
+        >
+          Sing out
+        </a>
+      </li>
+    </ul>
+  </div>
+  <app-todo-maker (submit)="addTodo($event.target.value)"></app-todo-maker>
+  <div>
+    <ul class="filter">
+      <li
+        (click)="setFilter('all')"
+        id="{{ filter === 'all' ? 'selectedAll' : '' }}"
+        class="filterBtn all"
+      >
+        ALL
+      </li>
+      <li
+      (click)="setFilter('completed')"
+        id="{{ filter === 'completed' ? 'selectedComp' : '' }}"
+        class="filterBtn comp"
+      >
+        COMPLETED
+      </li>
+      <li
+      (click)="setFilter('uncompleted')"
+        id="{{ filter === 'uncompleted' ? 'selectedTodo' : '' }}"
+        class="filterBtn to-do"
+      >
+        TO DO
+      </li>
+    </ul>
+  </div>
+<!--   <TodoList
+    todos={todos}
+    filteredTodos={filteredTodos}
+    setTodos={setTodos}
+  /> -->
+  <div class="home-logo">
+    <div class="title">
+      <i class="fas fa-stream"></i>
+      <h1>To Do List</h1>
+    </div>
+  </div>
+</div>
