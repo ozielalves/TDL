@@ -26,24 +26,14 @@
   <div class="home-nav">
     <ul class="menu">
       <li>
-        <a 
-        class="profile"
-        routerLink="../home"
-        >
-          Profile
-        </a>
+        <a class="profile" routerLink="../home"> Profile </a>
       </li>
       <li>
-        <a 
-        class="sing-out"
-        routerLink="../intro"
-        >
-          Sing out
-        </a>
+        <a class="sing-out" routerLink="../intro"> Sing out </a>
       </li>
     </ul>
   </div>
-  <app-todo-maker (submit)="addTodo($event.target.value)"></app-todo-maker>
+  <app-todo-maker (submit)="addTodo($event)"></app-todo-maker>
   <div>
     <ul class="filter">
       <li
@@ -54,14 +44,14 @@
         ALL
       </li>
       <li
-      (click)="setFilter('completed')"
+        (click)="setFilter('completed')"
         id="{{ filter === 'completed' ? 'selectedComp' : '' }}"
         class="filterBtn comp"
       >
         COMPLETED
       </li>
       <li
-      (click)="setFilter('uncompleted')"
+        (click)="setFilter('uncompleted')"
         id="{{ filter === 'uncompleted' ? 'selectedTodo' : '' }}"
         class="filterBtn to-do"
       >
@@ -69,11 +59,11 @@
       </li>
     </ul>
   </div>
-<!--   <TodoList
-    todos={todos}
-    filteredTodos={filteredTodos}
-    setTodos={setTodos}
-  /> -->
+  <app-todo-list
+    (todos)="filteredTodos"
+    (complete)="handleComplete($event)"
+    (delete)="handleDelete($event)"
+  ></app-todo-list>
   <div class="home-logo">
     <div class="title">
       <i class="fas fa-stream"></i>

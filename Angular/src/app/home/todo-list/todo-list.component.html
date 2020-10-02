@@ -1,1 +1,11 @@
-<p>todo-list works!</p>
+<div class="todo-container">
+  <ul class="todo-list" *ngFor="let todo of this.todos">
+      <app-todo
+        (complete)=complete.emit($event)
+        (delete)=delete.emit($event)
+        [id]="todo.id" 
+        [text]="todo.title" 
+        [completed]="todo.completed"
+      ></app-todo>
+  </ul>
+</div>

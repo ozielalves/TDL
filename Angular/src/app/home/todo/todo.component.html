@@ -1,1 +1,9 @@
-<p>todo works!</p>
+<div id="{{id}}" class="{{completed ? 'todo completed' : 'todo'}}">
+  <li class="todo-item">{{text}}</li>
+  <button (click)="complete.emit(id)" class="{{completed ? 'complete-btn uncomplete-btn': 'complete-btn'}}">
+    <i class="fas fa-check"></i>
+  </button>
+  <button (click)="delete.emit(id)" class="trash-btn">
+    <i class="fas fa-trash"></i>
+  </button>
+</div>

@@ -26,6 +26,7 @@ export class HomeComponent implements OnInit {
       .then((res) => (this.todos = res.data))
       .then(() => (this.filteredTodos = this.todos))
       .catch((err) => console.log(err));
+    console.log(this.todos,this.filteredTodos)
   }
 
   setFilter(filter: string): void  {
@@ -114,7 +115,7 @@ export class HomeComponent implements OnInit {
 
   addTodo(newTodo: Todo) {
     const { title, completed } = newTodo;
-    console.log(newTodo);
+   
     axios
       .post("http://jsonplaceholder.typicode.com/todos", {
         title,
