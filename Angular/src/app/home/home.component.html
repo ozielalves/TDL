@@ -60,7 +60,7 @@
     </ul>
   </div>
   <app-todo-list
-    (todos)="filteredTodos"
+    [todos]="filteredTodos"
     (complete)="handleComplete($event)"
     (delete)="handleDelete($event)"
   ></app-todo-list>

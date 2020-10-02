@@ -1,4 +1,4 @@
-<div id="{{id}}" class="{{completed ? 'todo completed' : 'todo'}}">
+<div id="td{{id}}" class="{{completed ? 'todo completed' : 'todo'}}">
   <li class="todo-item">{{text}}</li>
   <button (click)="complete.emit(id)" class="{{completed ? 'complete-btn uncomplete-btn': 'complete-btn'}}">
     <i class="fas fa-check"></i>

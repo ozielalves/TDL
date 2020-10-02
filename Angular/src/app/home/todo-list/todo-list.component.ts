@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 interface Todo {
   userId: number;
@@ -10,6 +10,7 @@ interface Todo {
 @Component({
   selector: 'app-todo-list',
   templateUrl: './todo-list.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./todo-list.component.scss']
 })
 export class TodoListComponent implements OnInit {
@@ -20,7 +21,6 @@ export class TodoListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.todos)
   }
 
 }

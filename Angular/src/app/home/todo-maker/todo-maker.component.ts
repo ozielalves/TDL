@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewEncapsulation } from '@angular/core';
 
 interface Todo {
   userId: number;
@@ -10,6 +10,7 @@ interface Todo {
 @Component({
   selector: 'app-todo-maker',
   templateUrl: './todo-maker.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./todo-maker.component.scss']
 })
 export class TodoMakerComponent implements OnInit {

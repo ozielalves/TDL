@@ -13,6 +13,10 @@
   position: relative;
   transition: background 1s ease;
 
+  app-todo-list{
+    z-index:3;
+  }
+
   #bg {
     position: absolute;
     left: -8%;
