@@ -1,6 +1,6 @@
 <div id="intro" class="{hoverBg ? 'intro hoverBg' : 'intro'}">
-<!--   <Navbar on:hovered=handleHover() />
- -->  <svg
+   <Navbar on:hovered=handleHover() />
+  <svg
     id="bg"
     width="1000"
     height="1000"
@@ -63,11 +63,11 @@
   export default {
     components: {
       LogoWrapper: './LogoWrapper.html',
-      /* Navbar: './Navbar.html', */
-      Header: './Header.html',
+      Navbar: './Navbar.html',
+/*       Header: './Header.html',
       TodoItem: './TodoItem.html',
       Footer: './Footer.html',
-      Info: './Info.html'
+      Info: './Info.html' */
     },
     oncreate() {
       routingService.onChange(pathname => this.set({ pathname }));

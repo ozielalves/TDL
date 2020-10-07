@@ -1,10 +1,10 @@
 <div class="intro-nav">
   <ul class="menu">
-    <NavLink
+    <!-- <NavLink
       onMouseEnter={triggerHovered()}
       onMouseLeave={triggerHovered()}
       path="/"
-      class="sing-up"
+      className="sing-up"
     >
       SING UP
     </NavLink>
@@ -12,32 +12,58 @@
       onMouseEnter={triggerHovered()}
       onMouseLeave={triggerHovered()}
       path="home"
-      class="{hoverSingIn ? 'sing-in hoveredBTn' : 'sing-in'}"
+      className="{hoverSingIn ? 'sing-in hoveredBTn' : 'sing-in'}"
     >
       SING IN
-    </NavLink>
+    </NavLink> -->
+    <li>
+      <a 
+      class="sing-up"
+      href="/intro"
+      on:mouseenter="triggerHovered()"
+      on:mouseleave="triggerHovered()"
+      >
+        SING UP
+      </a>
+    </li>
+    <li>
+      <a 
+      class="{hoverBg ? 'sing-in hoveredBtn' : 'sing-in'}"
+      href="/home"
+      on:mouseenter="triggerHovered()"
+      on:mouseleave=" triggerHovered()"
+      >
+        SING IN
+      </a>
+    </li>
   </ul>
 </div>
 
 <script>
-import { createEventDispatcher } from 'svelte'
-const dispatcher = createEventDispatcher()
+import { createEventDispatcher } from 'svelte';
+import routingService from './utils/routing.js';
+import path from './utils/path.js';
+
+/* const dispatch = createEventDispatcher(); */
+
 export default {
   data() {
     return {
-      hoverSingIn: false,
+      hoverBg: false,
       homePath: path.home,
       activePath: path.active,
-      completedPath: path.completed
+      completedPath: path.completed,
     };
   },
   components: {
-    NavLink: './NavLink.html'
+   /*  NavLink: './NavLink.html' */
   },
   methods: {
     triggerHovered() {
-      this.hoverSingIn = !this.hoverSingIn
-      dispatcher('hovered')
+      console.log('trigger on');
+      this.hoverSingIn = !this.hoverSingIn;
+      createEventDispatcher('hovered');
+       console.log('trigger of');
     }
   }
 };
