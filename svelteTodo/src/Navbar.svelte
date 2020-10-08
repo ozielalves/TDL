@@ -73,8 +73,8 @@ function triggerHovered() {
 }
 
 .intro-nav .sing-in:hover {
-  background: #232332;
-  border-color: #232332;
+  background:  #ee7600;
+  border-color: #ee7600;
   color: white;
 }
 
@@ -95,13 +95,9 @@ function triggerHovered() {
   text-decoration: none;
 }
 
-.intro-nav .sing-up:hover {
-  background: #232332;
-  border-color: #232332;
-}
-
-.intro-nav .hoveredBTn {
+.intro-nav .hoveredBtn {
   color: white;
+  border-color: white;
 }
 /*# sourceMappingURL=styles.css.map */
 </style>
