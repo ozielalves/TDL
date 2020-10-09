@@ -10,8 +10,3 @@ body {
   font-family: 'Montserrat', sans-serif;
 }
 
-.fadeOut {
-  -webkit-box-shadow: 25px 15px 0px #ffffff;
-          box-shadow: 25px 15px 0px #ffffff;
-  opacity: 0;
-}
