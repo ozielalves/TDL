@@ -1,11 +1,21 @@
 <script>
-import { todos ,filteredTodos, handleComplete, handleDelete } from '../routes/home/index.svelte';
+export let todos = undefined;
+export let filter = undefined;
+export let handleComplete = undefined;
+export let handleDelete = undefined;
+
+$: filteredTodos = todos ? todos.filter((todo) => {
+    if (filter === 'completed') todo.completed !== false;
+      else if (filter === 'uncompleted') todo.completed === false;
+      else todo;
+}) : console.log('erro');
+
 </script>
 
 <div class="todo-container">
   
   <ul class="todo-list" >
-    {#each $todos as todo}
+    {#each todos as todo}
     <div id="{'td' + todo.id}" class="{todo.completed ? 'todo completed' : 'todo'}">
       <li class="todo-item">{ todo.title }</li>
       <button

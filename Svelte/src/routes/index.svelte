@@ -3,14 +3,17 @@
 	import Nav from '../components/Nav.svelte'
 	import { writable } from 'svelte/store';
 	
-	export let segment = 'intro';
+	let segment = 'intro';
 	
-	export const hoverBg = writable(false);
-
+	let hoverBg = writable(false);
+	
+	function triggerHovered(value) {
+		hoverBg.update(hoverBg => value);
+  }
 </script>
 
 <div id="intro" class={$hoverBg ? 'intro hoverBg' : 'intro'}>
-	<Nav {segment}/>
+	<Nav {segment} {$hoverBg} {triggerHovered} />
 		<svg
 			id="bg"
 			width="1000"

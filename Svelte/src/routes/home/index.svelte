@@ -1,33 +1,32 @@
-<script context="module">
-  /* export let segment; */
+<script >
   import API from '../../API.js';
   import { onMount } from 'svelte';
-  import { writable, derived } from 'svelte/store';
+/*   import { writable, derived } from 'svelte/store'; */
   import Nav from '../../components/Nav.svelte';
   import TodoMaker from '../../components/TodoMaker.svelte';
   import TodoList from '../../components/TodoList.svelte';
-  /*  import TodoList from '../components/Nav.svelte'; */
 
-  export let segment = 'home';
+  let segment = 'home';
 
-  let filter = writable('all');
+  let filter = 'all';
 
-  export const todos = writable([
+  let todos = [
     {userId: 1, id: 1, title: 'This is a beatiful to do', completed: false},
     {userId: 1, id: 2, title: 'I had to do this', completed: false},
-    {userId: 1, id: 3, title: 'Why u do dis', completed: false},
+/*     {userId: 1, id: 3, title: 'Why u do dis', completed: false},
     {userId: 1, id: 4, title: 'Oh no, here we go again', completed: false},
-    {userId: 1, id: 5, title: 'We can still do this', completed: false},
-  ]);
+    {userId: 1, id: 5, title: 'We can still do this', completed: false}, */
+  ];
   
-  export const filteredTodos = derived(todos, $todos => (
+  
+  /* export const filteredTodos = derived($todos, $todos => (
     $todos.filter((todo) =>{
-      if (filter === 'completed') todo.completed !== false;
-      else if (filter === 'uncompleted') todo.completed === false;
+      if ($filter === 'completed') todo.completed !== false;
+      else if ($filter === 'uncompleted') todo.completed === false;
       else todo;
     })));
 
-  console.log(todos);
+  console.log($filteredTodos); */
 
   /* onMount(async () => {
     try {
@@ -48,10 +47,9 @@
   } */
 
   export async function handleDelete(id) {
-    console.log(id);
-    todos.set($todos => $todos.filter(todo => todo.id !== id));
-    todoFadeAway(id); 
-/*     try {
+    todoFadeAway(id);
+    todos = todos.filter((todo) => todo.id !== id);
+  /*     try {
       const response = await API.delete(`/${id}`);
       console.log(response.results);
       console.log(todos);
@@ -64,23 +62,26 @@
   }
 
   function todoFadeAway(id) {
+    console.log(`td${id}`)
     const todo = document.getElementById(`td${id}`);
+    console.log(todo);
     todo.classList.toggle("fadeOut");
     todo.addEventListener("transitionend", () => {
       todo.remove();
-      /* setFilter(filter); */
+      setFilter(filter);
     });
   }
 
   export function handleComplete(id) {
     console.log(id);
     let auxCompleted;
-    todos.update(todos.map((todo) => {
+    todos = todos.map((todo) => {
       if (todo.id === id) {
         auxCompleted = !todo.completed;
         todo.completed = !todo.completed;
+        console.log(auxCompleted);
       }
-    }))
+    });
     todoToggleCompleted(id, auxCompleted);
 /*     axios
       .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
@@ -104,21 +105,20 @@
       todo.classList.add("completed");
       completeBtn.classList.add("uncomplete-btn");
       todo.addEventListener("transitionend", () => {
-        /* setFilter(filter); */
+      setFilter(filter);
       });
     } else {
       todo.classList.remove("completed");
       completeBtn.classList.remove("uncomplete-btn");
       todo.addEventListener("transitionend", () => {
-        /* setFilter(filter); */
+      setFilter(filter);
       });
     }
   }
 
   export function addTodo(newTodo) {
-/*     const { title, completed } = newTodo; */
-    console.log(newTodo);
-/*     axios
+    /*     const { title, completed } = newTodo; */
+      /*axios
       .post("http://jsonplaceholder.typicode.com/todos", {
         title,
         completed,
@@ -126,26 +126,26 @@
       .then((res) => (this.todos = [res.data,...this.todos]))
       .then(this.setFilter(this.filter))
       .catch((err) => console.log(err)); */
-    todos.update([...todos, newTodo]);
+    todos = [...todos, newTodo];
   }
 
   function setFilter(filter) {
     switch (filter) {
       case "completed":
-        filter.set("completed");
-        filteredTodos.set(todos.filter(
+        filter = "completed";
+/*         filteredTodos = todos.filter(
           (todo) => todo.completed !== false
-        ));
+        ); */
         break;
       case "uncompleted":
-        filter.set("uncompleted");
-        filteredTodos.set(todos.filter(
+        filter = "uncompleted";
+/*         filteredTodos.set(todos.filter(
           (todo) => todo.completed === false
-        ));
+        )); */
         break;
       default:
-        filter.set("all");
-        filteredTodos.set(todos);
+        filter = "all";
+/*         filteredTodos.set(todos); */
         break;
     }
   }
@@ -177,33 +177,38 @@
     />
   </svg>
   <Nav {segment}/>
-  <TodoMaker />
+  <TodoMaker addTodo={addTodo}/>
   <div>
     <ul class="filter">
       <li
-        on:click={() => filter.set('all')}
-        id="{$filter === 'all' ? 'selectedAll' : ''}"
+        on:click={() => setFilter('all')}
+        id="{filter === 'all' ? 'selectedAll' : ''}"
         class="filterBtn all"
       >
         ALL
       </li>
       <li
-        on:click={() => filter.set('completed')}
-        id="{$filter === 'completed' ? 'selectedComp' : ''}"
+        on:click={() => setFilter('completed')}
+        id="{filter === 'completed' ? 'selectedComp' : ''}"
         class="filterBtn comp"
       >
         COMPLETED
       </li>
       <li
-        on:click={() => filter.set('uncompleted')}
-        id="{$filter === 'uncompleted' ? 'selectedTodo' : ''}"
+        on:click={() => setFilter('uncompleted')}
+        id="{filter === 'uncompleted' ? 'selectedTodo' : ''}"
         class="filterBtn to-do"
       >
         TO DO
       </li>
     </ul>
   </div>
-  <TodoList />
+  <TodoList 
+    todos={todos}
+    filter={filter} 
+    handleComplete={handleComplete} 
+    handleDelete={handleDelete}
+  />
   <div class="home-logo">
     <div class="title">
       <i class="fas fa-stream"></i>

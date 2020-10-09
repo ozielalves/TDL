@@ -1,12 +1,9 @@
 <script>
-	import { hoverBg } from '../routes/index.svelte';
-	
-	export let segment;
-	
-	function triggerHovered() {
-		hoverBg.set(!$hoverBg)
-  }
+	export let segment = undefined;
+	export let hoverBg = undefined;
+	export let triggerHovered = undefined;
 
+  $: hover = hoverBg;
 </script>
 
 <nav class="intro-nav">
@@ -15,18 +12,18 @@
 			<a 
 				class="{segment === (undefined||'intro') ? 'sing-up' : 'profile' }" 
 				href="{segment === (undefined||'intro') ? '.' : 'home'}"
-				on:mouseenter={() => triggerHovered()}
-      	on:mouseleave={() => triggerHovered()}
+				on:mouseenter={() => triggerHovered(!hoverBg)}
+      	on:mouseleave={() => triggerHovered(!hoverbg)}
 			>
 				{segment === (undefined||'intro') ? 'SING UP' : 'Profile'}
 			</a>
 		</li>
 		<li>
 			<a 
-				class="{segment === (undefined||'intro') ? $hoverBg ? 'sing-in hoveredBtn' : 'sing-in' : 'sing-out' }" 
+				class="{segment === (undefined||'intro') ? hover ? 'sing-in hoveredBtn' : 'sing-in' : 'sing-out' }" 
 				href="{segment === (undefined||'intro') ? 'home' : '.'}"
-				on:mouseenter={() => triggerHovered()}
-      	on:mouseleave={() => triggerHovered()}
+				on:mouseenter={() => triggerHovered(!hoverBg)}
+      	on:mouseleave={() => triggerHovered(!hoverBg)}
 			>
 				{segment === (undefined||'intro') ? 'SING IN' : 'Sing out'}
 			</a>

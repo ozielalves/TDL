@@ -1,5 +1,5 @@
 <script>
-  import { addTodo } from '../routes/home/index.svelte'
+  export let addTodo = undefined;
   
   let inputText = '';
 
@@ -7,7 +7,9 @@
   function handleSubmit(e) {
     e.preventDefault();
     const newTodo = {
-      title: this.inputText,
+      userId: 1,
+      id:  Math.floor(Math.random(2) * 100) * 10,
+      title: inputText,
       completed: false
     }
     // SEND UP TO PARENT
