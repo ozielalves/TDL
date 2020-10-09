@@ -153,6 +153,12 @@ $: filteredTodos = todos ? todos.filter((todo) => {
   opacity: 0.6;
 }
 
+:global(.fadeOut) {
+  -webkit-box-shadow: 25px 15px 0px #ffffff;
+          box-shadow: 25px 15px 0px #ffffff;
+  opacity: 0;
+}
+
 @media screen and (max-width: 768px) {
   .todo {
     max-width: 330px;
