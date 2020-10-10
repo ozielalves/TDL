@@ -6,14 +6,14 @@
 	let segment = 'intro';
 	
 	let hoverBg = writable(false);
-	
+
 	function triggerHovered(value) {
 		hoverBg.update(hoverBg => value);
   }
 </script>
 
 <div id="intro" class={$hoverBg ? 'intro hoverBg' : 'intro'}>
-	<Nav {segment} {$hoverBg} {triggerHovered} />
+	<Nav {segment} {hoverBg} {triggerHovered} />
 		<svg
 			id="bg"
 			width="1000"

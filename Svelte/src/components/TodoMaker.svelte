@@ -1,6 +1,8 @@
 <script>
   export let addTodo = undefined;
-  
+  export let filter = undefined;
+  export let setFilter = undefined;
+
   let inputText = '';
 
   /* bind:value={inputvalue} */
@@ -36,6 +38,31 @@
       </button>
     </div>
   </form>
+</div>
+<div>
+  <ul class="filter">
+    <li
+      on:click={() => setFilter('all')}
+      id="{filter === 'all' ? 'selectedAll' : ''}"
+      class="filterBtn all"
+    >
+      ALL
+    </li>
+    <li
+      on:click={() => setFilter('completed')}
+      id="{filter === 'completed' ? 'selectedComp' : ''}"
+      class="filterBtn comp"
+    >
+      COMPLETED
+    </li>
+    <li
+      on:click={() => setFilter('uncompleted')}
+      id="{filter === 'uncompleted' ? 'selectedTodo' : ''}"
+      class="filterBtn to-do"
+    >
+      TO DO
+    </li>
+  </ul>
 </div>
 
 <style>
@@ -169,6 +196,77 @@
     background: #222231;
     color: white;
   }
+  .filter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 8vh;
+  list-style-type: none;
+  margin: 1.5rem 0 0 0;
+  position: absolute;
+  left: 10%;
+  top: 40%;
+}
+
+.filter .filterBtn {
+  margin: 0 1rem;
+  padding: 1rem 1.5rem;
+  border-width: 3px;
+  border-color: white;
+  border-radius: 50px;
+  border-style: solid;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.filter .all:hover {
+  background: #5B7397;
+  border-color: #5B7397;
+  border-style: solid;
+}
+
+.filter #selectedAll {
+  background: #5B7397 !important;
+  border-color: #5B7397 !important;
+  border-style: solid;
+}
+
+.filter .comp:hover {
+  background: #3dd8ad;
+  border-color: #3dd8ad;
+  border-style: solid;
+}
+
+.filter #selectedComp {
+  background: #3dd8ad !important;
+  border-color: #3dd8ad !important;
+  border-style: solid;
+}
+
+.filter .to-do:hover {
+  background: #ffa500;
+  border-color: #ffa500;
+  border-style: solid;
+}
+
+.filter #selectedTodo {
+  background: #ffa500 !important;
+  border-color: #ffa500 !important;
+  border-style: solid;
+}
 
 /*# sourceMappingURL=styles.css.map */
 </style>

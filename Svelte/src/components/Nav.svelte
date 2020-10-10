@@ -3,7 +3,6 @@
 	export let hoverBg = undefined;
 	export let triggerHovered = undefined;
 
-  $: hover = hoverBg;
 </script>
 
 <nav class="intro-nav">
@@ -12,18 +11,19 @@
 			<a 
 				class="{segment === (undefined||'intro') ? 'sing-up' : 'profile' }" 
 				href="{segment === (undefined||'intro') ? '.' : 'home'}"
-				on:mouseenter={() => triggerHovered(!hoverBg)}
-      	on:mouseleave={() => triggerHovered(!hoverbg)}
+        
+        on:mouseenter={segment === (undefined||'intro') ? () => triggerHovered(!$hoverBg) : ''}
+        on:mouseleave={segment === (undefined||'intro') ? () => triggerHovered(!$hoverBg) : ''}
 			>
 				{segment === (undefined||'intro') ? 'SING UP' : 'Profile'}
 			</a>
 		</li>
 		<li>
 			<a 
-				class="{segment === (undefined||'intro') ? hover ? 'sing-in hoveredBtn' : 'sing-in' : 'sing-out' }" 
+				class="{segment === (undefined||'intro') ? $hoverBg ? 'sing-in hoveredBtn' : 'sing-in' : 'sing-out' }" 
 				href="{segment === (undefined||'intro') ? 'home' : '.'}"
-				on:mouseenter={() => triggerHovered(!hoverBg)}
-      	on:mouseleave={() => triggerHovered(!hoverBg)}
+				on:mouseenter={segment === (undefined||'intro') ? () => triggerHovered(!$hoverBg) : ''}
+        on:mouseleave={segment === (undefined||'intro') ? () => triggerHovered(!$hoverBg) : ''}
 			>
 				{segment === (undefined||'intro') ? 'SING IN' : 'Sing out'}
 			</a>

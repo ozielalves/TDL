@@ -1,7 +1,6 @@
 <script >
   import API from '../../API.js';
   import { onMount } from 'svelte';
-/*   import { writable, derived } from 'svelte/store'; */
   import Nav from '../../components/Nav.svelte';
   import TodoMaker from '../../components/TodoMaker.svelte';
   import TodoList from '../../components/TodoList.svelte';
@@ -12,11 +11,13 @@
 
   let todos = [
     {userId: 1, id: 1, title: 'This is a beatiful to do', completed: false},
-    {userId: 1, id: 2, title: 'I had to do this', completed: false},
-/*     {userId: 1, id: 3, title: 'Why u do dis', completed: false},
-    {userId: 1, id: 4, title: 'Oh no, here we go again', completed: false},
+    {userId: 1, id: 2, title: 'I had to do this', completed: true},
+    {userId: 1, id: 3, title: 'Why u do dis', completed: false},
+/*    {userId: 1, id: 4, title: 'Oh no, here we go again', completed: false},
     {userId: 1, id: 5, title: 'We can still do this', completed: false}, */
   ];
+
+  let filteredTodos = todos;
   
   
   /* export const filteredTodos = derived($todos, $todos => (
@@ -46,7 +47,7 @@
       .catch((err) => console.log(err));
   } */
 
-  export async function handleDelete(id) {
+  function handleDelete(id) {
     todoFadeAway(id);
     todos = todos.filter((todo) => todo.id !== id);
   /*     try {
@@ -72,15 +73,16 @@
     });
   }
 
-  export function handleComplete(id) {
-    console.log(id);
+  function handleComplete(id) {
     let auxCompleted;
     todos = todos.map((todo) => {
       if (todo.id === id) {
-        auxCompleted = !todo.completed;
-        todo.completed = !todo.completed;
-        console.log(auxCompleted);
+        return {
+          ...todo, completed: !todo.completed
+        }
       }
+      auxCompleted = !todo.completed;
+      return todo;
     });
     todoToggleCompleted(id, auxCompleted);
 /*     axios
@@ -116,7 +118,7 @@
     }
   }
 
-  export function addTodo(newTodo) {
+  function addTodo(newTodo) {
     /*     const { title, completed } = newTodo; */
       /*axios
       .post("http://jsonplaceholder.typicode.com/todos", {
@@ -127,28 +129,30 @@
       .then(this.setFilter(this.filter))
       .catch((err) => console.log(err)); */
     todos = [...todos, newTodo];
+    setFilter(filter);
   }
 
-  function setFilter(filter) {
-    switch (filter) {
+  function setFilter(newFilter)  {
+    switch (newFilter) {
       case "completed":
         filter = "completed";
-/*         filteredTodos = todos.filter(
+        filteredTodos = todos.filter(
           (todo) => todo.completed !== false
-        ); */
+        );
         break;
       case "uncompleted":
         filter = "uncompleted";
-/*         filteredTodos.set(todos.filter(
+        filteredTodos = todos.filter(
           (todo) => todo.completed === false
-        )); */
+        );
         break;
       default:
         filter = "all";
-/*         filteredTodos.set(todos); */
+        filteredTodos = todos;
         break;
     }
   }
+
 </script>
 
 <div class="home">
@@ -177,34 +181,13 @@
     />
   </svg>
   <Nav {segment}/>
-  <TodoMaker addTodo={addTodo}/>
-  <div>
-    <ul class="filter">
-      <li
-        on:click={() => setFilter('all')}
-        id="{filter === 'all' ? 'selectedAll' : ''}"
-        class="filterBtn all"
-      >
-        ALL
-      </li>
-      <li
-        on:click={() => setFilter('completed')}
-        id="{filter === 'completed' ? 'selectedComp' : ''}"
-        class="filterBtn comp"
-      >
-        COMPLETED
-      </li>
-      <li
-        on:click={() => setFilter('uncompleted')}
-        id="{filter === 'uncompleted' ? 'selectedTodo' : ''}"
-        class="filterBtn to-do"
-      >
-        TO DO
-      </li>
-    </ul>
-  </div>
+  <TodoMaker 
+    addTodo={addTodo} 
+    filter={filter} 
+    setFilter={setFilter}
+  />
   <TodoList 
-    todos={todos}
+    todos={filteredTodos}
     filter={filter} 
     handleComplete={handleComplete} 
     handleDelete={handleDelete}
@@ -254,78 +237,6 @@
 .home #bg-circle-2 {
   -webkit-animation: float 8s ease-in-out infinite;
           animation: float 8s ease-in-out infinite;
-}
-
-.home .filter {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  height: 8vh;
-  list-style-type: none;
-  margin: 1.5rem 0 0 0;
-  position: absolute;
-  left: 10%;
-  top: 40%;
-}
-
-.home .filter .filterBtn {
-  margin: 0 1rem;
-  padding: 1rem 1.5rem;
-  border-width: 3px;
-  border-color: white;
-  border-radius: 50px;
-  border-style: solid;
-  color: white;
-  cursor: pointer;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-  text-decoration: none;
-}
-
-.home .filter .all:hover {
-  background: #5B7397;
-  border-color: #5B7397;
-  border-style: solid;
-}
-
-.home .filter #selectedAll {
-  background: #5B7397 !important;
-  border-color: #5B7397 !important;
-  border-style: solid;
-}
-
-.home .filter .comp:hover {
-  background: #3dd8ad;
-  border-color: #3dd8ad;
-  border-style: solid;
-}
-
-.home .filter #selectedComp {
-  background: #3dd8ad !important;
-  border-color: #3dd8ad !important;
-  border-style: solid;
-}
-
-.home .filter .to-do:hover {
-  background: #ffa500;
-  border-color: #ffa500;
-  border-style: solid;
-}
-
-.home .filter #selectedTodo {
-  background: #ffa500 !important;
-  border-color: #ffa500 !important;
-  border-style: solid;
 }
 
 .home .home-logo {
