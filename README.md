@@ -15,7 +15,7 @@
 
 ## Protótipo do Projeto:
 
-### Welcome
+### Intro
 ![](https://i.imgur.com/CHdU1WN.png)
 ### Home
 ![](https://i.imgur.com/rrS5qOl.png)
