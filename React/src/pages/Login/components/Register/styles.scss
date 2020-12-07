@@ -1,0 +1,127 @@
+@import "../../../../props.scss";
+
+.login-form {
+  @include flexing(column);
+  text-align: center;
+  font-size: 1.5rem;
+  width: 450px;
+  box-shadow: -20px -12px 0px #222231;
+  padding: 2rem;
+  margin: 2rem 0 6rem 0;
+  border-style: solid;
+  border-radius: 5px;
+  background: white;
+  transition: all 0.5s ease;
+  z-index: 1;
+
+  .title {
+    justify-self: center;
+    display: flex;
+
+    i {
+      position: relative;
+      align-self: center;
+      margin: 1rem;
+    }
+  }
+
+  p {
+    font-family: "Playfair Display", serif;
+  }
+}
+
+form {
+  margin: 1rem 0;
+  @include flexing(column);
+
+  .confirm-button {
+    border-width: 3px;
+    border-color: #6D6069;
+    font-size: medium;
+    border-style: solid;
+    border-radius: 50px;
+    padding: 0.7rem 2rem;
+    margin-top: 20px;
+    cursor: pointer;
+    color: white;
+    background: #6D6069;
+    transition: all 0.3s ease;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
+
+    &:hover {
+      background: #EE7600;
+      border-color: #EE7600;
+      color: white;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  .formItem {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    p {
+      margin: 10px 0px;
+    }
+
+    .todoInput {
+      @include flexing(row);
+
+      margin: 0 !important;
+      input,
+      button {
+        border-width: 3px;
+        border-color: #222231;
+        font-size: medium;
+        border-style: solid;
+        border-radius: 50px;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      input {
+        padding: 0.7rem;
+        width: 278.4px;
+      }
+
+      ::placeholder {
+        color: #c2c2c2;
+      }
+
+      button {
+        padding: 0.7rem 0.8rem;
+        cursor: pointer;
+        color: #222231;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: #222231;
+          color: white;
+        }
+      }
+    }
+  }
+}
+
+#appearDown {
+  transition: appearDown 1s ease-in;
+}
+
+@keyframes appearDown {
+  0% {
+    transform: translatey(-100%);
+  }
+  100% {
+    transform: translatey(0%);
+  }
+}

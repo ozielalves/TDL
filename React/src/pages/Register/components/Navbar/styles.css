@@ -1,0 +1,75 @@
+.login-nav .menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  height: 8vh;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  list-style-type: none;
+  margin: 1.5rem 6rem 0 0;
+}
+
+.login-nav .register-sing-in {
+  margin: 0 2.5rem;
+  padding: 1rem 1.5rem;
+  border-width: 3px;
+  border-color: #232332;
+  color: #232332;
+  border-radius: 50px;
+  border-style: solid;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+
+.login-nav .register-sing-in a {
+  text-decoration: none;
+}
+
+.login-nav .go-back {
+  padding: 1rem 1.2rem;
+  border-width: 3px;
+  border-color: #6D6069;
+  background: #6D6069;
+  border-radius: 50px;
+  border-style: solid;
+  color: white;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+
+.login-nav .go-back a {
+  text-decoration: none;
+}
+
+.login-nav .nav-text {
+  padding: 1rem 0rem;
+  color: #232332;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+  text-decoration: none;
+}
+
+.login-nav .hoveredBTn {
+  border-color: #6D6069 !important;
+  background: #6D6069 !important;
+}
+
+.login-nav .hoveredText {
+  color: white;
+}
+/*# sourceMappingURL=styles.css.map */

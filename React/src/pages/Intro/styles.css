@@ -16,17 +16,17 @@
 
 #intro #bg {
   position: absolute;
-  left: -12%;
-  top: -20%;
+  left: -50%;
+  top: -50%;
   z-index: 0;
   pointer-events: none;
   -webkit-transition: fill 1s ease;
   transition: fill 1s ease;
 }
 
-#intro .hoveredCircle {
-  -webkit-animation: dance 0.8s ease-in-out;
-          animation: dance 0.8s ease-in-out;
+#intro .hoveredIntroCircle {
+  -webkit-animation: danceIntro 0.8s ease-in-out;
+          animation: danceIntro 0.8s ease-in-out;
 }
 
 #intro #mt1 {
@@ -85,8 +85,8 @@
   left: 48%;
   top: 40%;
   z-index: 1;
-  -webkit-animation: float 3s ease-in-out infinite;
-          animation: float 3s ease-in-out infinite;
+  -webkit-animation: Logofloat 3s ease-in-out infinite;
+          animation: Logofloat 3s ease-in-out infinite;
 }
 
 .hoverBg {
@@ -153,7 +153,7 @@
   }
 }
 
-@-webkit-keyframes dance {
+@-webkit-keyframes danceIntro {
   0% {
     -webkit-transform: translatex(0%);
             transform: translatex(0%);
@@ -168,7 +168,7 @@
   }
 }
 
-@keyframes dance {
+@keyframes danceIntro {
   0% {
     -webkit-transform: translatex(0%);
             transform: translatex(0%);

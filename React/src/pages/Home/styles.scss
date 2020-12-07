@@ -16,17 +16,17 @@
   #bg {
     position: absolute;
     left: -8%;
-    top: -35%;
+    top: -25%;
     z-index: 0;
     pointer-events: none;
     transition: fill 1s ease;
   }
 
   #bg-circle-1 {
-    animation: float 6s ease-in-out infinite;
+    animation: float 10s ease-in-out infinite;
   }
   #bg-circle-2 {
-    animation: float 8s ease-in-out infinite;
+    animation: float 14s ease-in-out infinite;
   }
 
   .filter {
@@ -142,13 +142,13 @@
 }
 
 @keyframes float {
-	0% {
-		transform: translatey(0px);
-	}
-	50% {
-		transform: translatey(-10px);
-	}
-	100% {
-		transform: translatey(0px);
-	}
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-100px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
 }

@@ -21,7 +21,7 @@
   bottom: 29%;
   z-index: 7;
 
-  animation: float 3s ease-in-out infinite;
+  animation: Logofloat 3s ease-in-out infinite;
 
   .title {
     justify-self: center;
@@ -46,7 +46,7 @@
 }
 
 /* Animation  */
-@keyframes float {
+@keyframes Logofloat {
 	0% {
 		transform: translatey(0px);
 	}

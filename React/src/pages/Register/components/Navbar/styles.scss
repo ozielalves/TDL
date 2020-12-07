@@ -1,0 +1,60 @@
+@import "../../../../props.scss";
+
+.login-nav {
+  .menu {
+    @include flexing(row);
+    height: 8vh;
+    justify-content: flex-end;
+    list-style-type: none;
+    margin: 1.5rem 6rem 0 0;
+  }
+
+  .register-sing-in {
+    margin: 0 2.5rem;
+    padding: 1rem 1.5rem;
+    border-width: 3px;
+    border-color: #232332;
+    color:#232332;
+    border-radius: 50px;
+    border-style: solid;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-decoration: none;
+
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .go-back {
+    padding: 1rem 1.2rem;
+    border-width: 3px;
+    border-color: #6D6069;
+    background: #6D6069;
+    border-radius: 50px;
+    border-style: solid;
+    color: white;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    a {
+      text-decoration: none;
+    }
+  }
+
+  .nav-text {
+    padding: 1rem 0rem;
+    color: #232332;
+    transition: all 0.5s ease;
+    text-decoration: none;
+  }
+
+  .hoveredBTn {
+    border-color: #6D6069 !important;
+    background: #6D6069 !important;
+  }
+
+  .hoveredText {
+    color: white;
+  }
+}

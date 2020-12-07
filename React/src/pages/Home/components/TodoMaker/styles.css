@@ -116,7 +116,7 @@ form .todoInput ::placeholder {
   color: #C2C2C2;
 }
 
-form .todoInput button {
+form .todoInput .todo-button {
   padding: 0.7rem 0.8rem;
   cursor: pointer;
   color: #222231;
@@ -124,7 +124,7 @@ form .todoInput button {
   transition: all 0.3s ease;
 }
 
-form .todoInput button:hover {
+form .todoInput .todo-button:hover {
   background: #222231;
   color: white;
 }

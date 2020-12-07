@@ -1,0 +1,126 @@
+@import "../../props.scss";
+
+#login {
+  display: flex;
+  flex-direction: column;
+  background: $pinkBg;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  transition: background 1s ease;
+
+  #bg {
+    position: absolute;
+    left: 9%;
+    top: 0%;
+    z-index: 0;
+    pointer-events: none;
+    transition: fill 1s ease;
+  }
+
+  #bg-circle-1 {
+    animation: float1 6s ease-in-out infinite;
+  }
+  #bg-circle-2 {
+    animation: float2 8s ease-in-out infinite;
+  }
+
+  .hoveredCircle {
+    animation: dance 0.8s ease-in-out;
+  }
+
+  .content {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    .login-logo {
+      z-index: 1;
+      padding: 1rem 6rem;
+      background: $logoShadowColor;
+      border-radius: 10px 10px 0px 0px;
+      width: 450px;
+      height: 100px;
+
+      .title {
+        justify-self: center;
+        display: flex;
+        padding: 1rem 0;
+        color: white;
+        align-items: center;
+
+        i {
+          position: relative;
+          align-self: center;
+          margin: 1rem;
+        }
+      }
+    }
+  }
+}
+
+.hoverBg {
+  background: $logoShadowColor !important;
+}
+
+@keyframes goAway {
+  0% {
+    transform: translatex(0%);
+  }
+  50% {
+    transform: translatex(10%);
+  }
+  100% {
+    transform: translatex(0%);
+  }
+}
+@keyframes goAwayReduced {
+  0% {
+    transform: translatex(0%);
+  }
+  50% {
+    transform: translatex(-10%);
+  }
+  100% {
+    transform: translatex(0%);
+  }
+}
+@keyframes dance {
+  0% {
+    transform: translatex(0%);
+    transform: translatey(0%);
+  }
+  50% {
+    transform: translatex(-15%);
+    transform: translatey(-15%);
+  }
+  100% {
+    transform: translatex(0%);
+    transform: translatey(0%);
+  }
+}
+
+@keyframes float1 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-60px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    transform: translatey(0px);
+  }
+  50% {
+    transform: translatey(-50px);
+  }
+  100% {
+    transform: translatey(0px);
+  }
+}

@@ -17,7 +17,7 @@
 .home #bg {
   position: absolute;
   left: -8%;
-  top: -35%;
+  top: -25%;
   z-index: 0;
   pointer-events: none;
   -webkit-transition: fill 1s ease;
@@ -25,13 +25,13 @@
 }
 
 .home #bg-circle-1 {
-  -webkit-animation: float 6s ease-in-out infinite;
-          animation: float 6s ease-in-out infinite;
+  -webkit-animation: float 10s ease-in-out infinite;
+          animation: float 10s ease-in-out infinite;
 }
 
 .home #bg-circle-2 {
-  -webkit-animation: float 8s ease-in-out infinite;
-          animation: float 8s ease-in-out infinite;
+  -webkit-animation: float 14s ease-in-out infinite;
+          animation: float 14s ease-in-out infinite;
 }
 
 .home .filter {
@@ -192,8 +192,8 @@
             transform: translatey(0px);
   }
   50% {
-    -webkit-transform: translatey(-10px);
-            transform: translatey(-10px);
+    -webkit-transform: translatey(-100px);
+            transform: translatey(-100px);
   }
   100% {
     -webkit-transform: translatey(0px);
@@ -207,8 +207,8 @@
             transform: translatey(0px);
   }
   50% {
-    -webkit-transform: translatey(-10px);
-            transform: translatey(-10px);
+    -webkit-transform: translatey(-100px);
+            transform: translatey(-100px);
   }
   100% {
     -webkit-transform: translatey(0px);

@@ -72,25 +72,31 @@ export default {
     },
     handleComplete(id) {
       console.log(id);
-      /* console.log(id);
-      this.todos.map((todo) => {
+      /*
+      let auxCompleted = !todo.completed;
+      this.todos = this.todos.map((todo) => {
         if (todo.id === id) {
-          todo.completed = !todo.completed;
+        return {
+          ...todo, completed: !todo.completed
         }
-      }); */
+        auxCompleted = !todo.completed;
+        return todo;
+      }});
+      
+       */
       axios
         .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
         .then((res) => {
           const completed = !res.data.completed;
-          console.log(completed)
+          console.log(completed);
           axios
             .put(`http://jsonplaceholder.typicode.com/todos/${id}`, {
               completed,
             })
             .then(this.todoToggleCompleted(id, completed))
             .catch((err) => console.log(err));
-            })
-            .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
     },
     todoToggleCompleted(id, completed) {
       const todo = document.getElementById(`td${id}`);
@@ -117,13 +123,13 @@ export default {
           title,
           completed,
         })
-        .then((res) => (this.todos = [res.data,...this.todos]))
+        .then((res) => (this.todos = [res.data, ...this.todos]))
         .then(this.setFilter(this.filter))
         .catch((err) => console.log(err));
       /* this.todos = [...this.todos, newTodo]; */
     },
-    setFilter(filter) {
-      switch (filter) {
+    setFilter(newFilter) {
+      switch (newFilter) {
         case "completed":
           this.filter = "completed";
           this.filteredTodos = this.todos.filter(

@@ -31,8 +31,8 @@
   left: 10%;
   bottom: 29%;
   z-index: 7;
-  -webkit-animation: float 3s ease-in-out infinite;
-          animation: float 3s ease-in-out infinite;
+  -webkit-animation: Logofloat 3s ease-in-out infinite;
+          animation: Logofloat 3s ease-in-out infinite;
 }
 
 .intro-logo .title {
@@ -62,7 +62,7 @@
 }
 
 /* Animation  */
-@-webkit-keyframes float {
+@-webkit-keyframes Logofloat {
   0% {
     -webkit-transform: translatey(0px);
             transform: translatey(0px);
@@ -76,7 +76,7 @@
             transform: translatey(0px);
   }
 }
-@keyframes float {
+@keyframes Logofloat {
   0% {
     -webkit-transform: translatey(0px);
             transform: translatey(0px);

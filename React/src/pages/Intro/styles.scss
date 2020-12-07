@@ -11,15 +11,15 @@
 
   #bg {
     position: absolute;
-    left: -12%;
-    top: -20%;
+    left: -50%;
+    top: -50%;
     z-index: 0;
     pointer-events: none;
     transition: fill 1s ease;
   }
 
-  .hoveredCircle {
-    animation: dance 0.8s ease-in-out;
+  .hoveredIntroCircle {
+    animation: danceIntro 0.8s ease-in-out;
   }
 
   #mt1 {
@@ -68,7 +68,7 @@
     left: 48%;
     top: 40%;
     z-index: 1;
-    animation: float 3s ease-in-out infinite;
+    animation: Logofloat 3s ease-in-out infinite;
   }
 }
 
@@ -98,7 +98,7 @@
 		transform: translatex(0%);
 	}
 }
-@keyframes dance {
+@keyframes danceIntro {
   0% {
 		transform: translatex(0%);
   }

@@ -1,6 +1,6 @@
 <script >
-  import API from '../../API.js';
-  import { onMount } from 'svelte';
+/*   import API from '../../API.js';
+  import { onMount } from 'svelte'; */
   import Nav from '../../components/Nav.svelte';
   import TodoMaker from '../../components/TodoMaker.svelte';
   import TodoList from '../../components/TodoList.svelte';
@@ -18,16 +18,6 @@
   ];
 
   let filteredTodos = todos;
-  
-  
-  /* export const filteredTodos = derived($todos, $todos => (
-    $todos.filter((todo) =>{
-      if ($filter === 'completed') todo.completed !== false;
-      else if ($filter === 'uncompleted') todo.completed === false;
-      else todo;
-    })));
-
-  console.log($filteredTodos); */
 
   /* onMount(async () => {
     try {
@@ -39,17 +29,11 @@
     }
   }); */
 
-  /* function created() {
-    axios
-      .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
-      .then((res) => (this.todos = res.data))
-      .then(() => (this.filteredTodos = this.todos))
-      .catch((err) => console.log(err));
-  } */
-
   function handleDelete(id) {
-    todoFadeAway(id);
+    /* todoFadeAway(id); */
     todos = todos.filter((todo) => todo.id !== id);
+    todoFadeAway(id)
+    setTimeout(() => setFilter(filter), 700);
   /*     try {
       const response = await API.delete(`/${id}`);
       console.log(response.results);
@@ -67,10 +51,6 @@
     const todo = document.getElementById(`td${id}`);
     console.log(todo);
     todo.classList.toggle("fadeOut");
-    todo.addEventListener("transitionend", () => {
-      todo.remove();
-      setFilter(filter);
-    });
   }
 
   function handleComplete(id) {
@@ -85,7 +65,7 @@
       return todo;
     });
     todoToggleCompleted(id, auxCompleted);
-/*     axios
+    /* axios
       .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
       .then((res) => {
         const completed = !res.data.completed;

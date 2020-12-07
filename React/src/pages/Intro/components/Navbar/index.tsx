@@ -15,7 +15,7 @@ export default function Navbar({ handleHover, hoverBg }: navBarProps) {
         <Link
           onMouseEnter={handleHover}
           onMouseLeave={handleHover}
-          to="/"
+          to="register"
           className="sing-up"
         >
           SING UP
@@ -23,7 +23,7 @@ export default function Navbar({ handleHover, hoverBg }: navBarProps) {
         <Link
           onMouseEnter={handleHover}
           onMouseLeave={handleHover}
-          to="home"
+          to="login"
           className={hoverBg ? "sing-in hoveredBTn" : "sing-in"}
         >
           SING IN

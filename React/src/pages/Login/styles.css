@@ -1,0 +1,253 @@
+#login {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  background: #D3B3B3;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+  -webkit-transition: background 1s ease;
+  transition: background 1s ease;
+}
+
+#login #bg {
+  position: absolute;
+  left: 9%;
+  top: 0%;
+  z-index: 0;
+  pointer-events: none;
+  -webkit-transition: fill 1s ease;
+  transition: fill 1s ease;
+}
+
+#login #bg-circle-1 {
+  -webkit-animation: float1 6s ease-in-out infinite;
+          animation: float1 6s ease-in-out infinite;
+}
+
+#login #bg-circle-2 {
+  -webkit-animation: float2 8s ease-in-out infinite;
+          animation: float2 8s ease-in-out infinite;
+}
+
+#login .hoveredCircle {
+  -webkit-animation: dance 0.8s ease-in-out;
+          animation: dance 0.8s ease-in-out;
+}
+
+#login .content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#login .content .login-logo {
+  z-index: 1;
+  padding: 1rem 6rem;
+  background: #232332;
+  border-radius: 10px 10px 0px 0px;
+  width: 450px;
+  height: 100px;
+}
+
+#login .content .login-logo .title {
+  justify-self: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 1rem 0;
+  color: white;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#login .content .login-logo .title i {
+  position: relative;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin: 1rem;
+}
+
+.hoverBg {
+  background: #232332 !important;
+}
+
+@-webkit-keyframes goAway {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+  50% {
+    -webkit-transform: translatex(10%);
+            transform: translatex(10%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+}
+
+@keyframes goAway {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+  50% {
+    -webkit-transform: translatex(10%);
+            transform: translatex(10%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+}
+
+@-webkit-keyframes goAwayReduced {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+  50% {
+    -webkit-transform: translatex(-10%);
+            transform: translatex(-10%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+}
+
+@keyframes goAwayReduced {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+  50% {
+    -webkit-transform: translatex(-10%);
+            transform: translatex(-10%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+  }
+}
+
+@-webkit-keyframes dance {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+  50% {
+    -webkit-transform: translatex(-15%);
+            transform: translatex(-15%);
+    -webkit-transform: translatey(-15%);
+            transform: translatey(-15%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+}
+
+@keyframes dance {
+  0% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+  50% {
+    -webkit-transform: translatex(-15%);
+            transform: translatex(-15%);
+    -webkit-transform: translatey(-15%);
+            transform: translatey(-15%);
+  }
+  100% {
+    -webkit-transform: translatex(0%);
+            transform: translatex(0%);
+    -webkit-transform: translatey(0%);
+            transform: translatey(0%);
+  }
+}
+
+@-webkit-keyframes float1 {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-60px);
+            transform: translatey(-60px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
+
+@keyframes float1 {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-60px);
+            transform: translatey(-60px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
+
+@-webkit-keyframes float2 {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-50px);
+            transform: translatey(-50px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
+
+@keyframes float2 {
+  0% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+  50% {
+    -webkit-transform: translatey(-50px);
+            transform: translatey(-50px);
+  }
+  100% {
+    -webkit-transform: translatey(0px);
+            transform: translatey(0px);
+  }
+}
+/*# sourceMappingURL=styles.css.map */
