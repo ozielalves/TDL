@@ -4,7 +4,7 @@ import axios from "axios";
 import HomeNav from "@/components/HomeNav.vue";
 import TodoMaker from "@/components/TodoMaker.vue";
 import TodoList from "@/components/TodoList.vue";
-/* 
+/*
 interface Todo {
   userId: number,
   id: number,
@@ -21,46 +21,40 @@ export default {
   },
   data() {
     return {
-      todos: [] /* as Todo[] */,
-      /* {
-          id: 1,
-          text: "Todo One",
-          completed: false,
-        },
-        {
-          id: 1,
-          text: "Todo two",
-          completed: true,
-        },
-        {
-          id: 1,
-          text: "Todo Three",
-          completed: false,
-        },
-      ], */
-      filteredTodos: [] /* as Todo[] */,
-      filter: "all" /*  as string */,
+      todos: [],
+      filteredTodos: [],
+      filter: "all",
     };
   },
   created() {
-    axios
+    if (localStorage.getItem("todos") === null) {
+      localStorage.setItem("todos", JSON.stringify([]));
+    } else {
+      const todosFromLocal = JSON.parse(localStorage.getItem("todos") || "{}");
+      this.todos = todosFromLocal.filter((item) => item.id && item);
+    }
+    this.updateTodos();
+    /* axios
       .get("http://jsonplaceholder.typicode.com/todos?_limit=5")
       .then((res) => (this.todos = res.data))
       .then(() => (this.filteredTodos = this.todos))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err)); */
   },
   methods: {
+    updateTodos() {
+      this.setFilter(this.filter);
+    },
     handleDelete(id) {
-      /* console.log(id);
-      this.todos = this.todos.filter(todo => todo.id !== id);
-      this.setFilter(this.filter); */
-      axios
+      this.todos = this.todos.filter((todo) => todo.id !== id);
+      localStorage.setItem("todos", JSON.stringify(this.todos));
+      this.todoFadeAway(id);
+      /* axios
         .delete(`http://jsonplaceholder.typicode.com/todos/${id}`)
         .then(
           (res) => (this.todos = this.todos.filter((todo) => todo.id !== id))
         )
         .then(this.todoFadeAway(id))
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err)); */
     },
     todoFadeAway(id) {
       const todo = document.getElementById(`td${id}`);
@@ -71,20 +65,20 @@ export default {
       });
     },
     handleComplete(id) {
-      console.log(id);
-      /*
-      let auxCompleted = !todo.completed;
+      let completed;
       this.todos = this.todos.map((todo) => {
         if (todo.id === id) {
-        return {
-          ...todo, completed: !todo.completed
+          completed = !todo.completed;
+          return {
+            ...todo,
+            completed: !todo.completed,
+          };
         }
-        auxCompleted = !todo.completed;
         return todo;
-      }});
-      
-       */
-      axios
+      });
+      localStorage.setItem("todos", JSON.stringify(this.todos));
+      this.todoToggleCompleted(id, completed);
+      /* axios
         .get(`http://jsonplaceholder.typicode.com/todos/${id}`)
         .then((res) => {
           const completed = !res.data.completed;
@@ -96,7 +90,7 @@ export default {
             .then(this.todoToggleCompleted(id, completed))
             .catch((err) => console.log(err));
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err)); */
     },
     todoToggleCompleted(id, completed) {
       const todo = document.getElementById(`td${id}`);
@@ -116,8 +110,10 @@ export default {
       }
     },
     addTodo(newTodo) {
-      const { title, completed } = newTodo;
-      console.log(newTodo);
+      this.todos = [...this.todos, newTodo];
+      localStorage.setItem("todos", JSON.stringify(this.todos));
+      this.updateTodos();
+      /* const { title, completed } = newTodo;
       axios
         .post("http://jsonplaceholder.typicode.com/todos", {
           title,
@@ -125,8 +121,7 @@ export default {
         })
         .then((res) => (this.todos = [res.data, ...this.todos]))
         .then(this.setFilter(this.filter))
-        .catch((err) => console.log(err));
-      /* this.todos = [...this.todos, newTodo]; */
+        .catch((err) => console.log(err)); */
     },
     setFilter(newFilter) {
       switch (newFilter) {

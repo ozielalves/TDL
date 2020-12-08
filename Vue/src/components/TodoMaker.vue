@@ -34,8 +34,10 @@ export default {
     handleSubmit(e) {
       e.preventDefault();
       const newTodo = {
+        userId: Math.floor(Math.random() * 100) + 1,
+        id: Math.floor(Math.random() * 100000) + 1,
         title: this.inputText,
-        completed: false
+        completed: false,
       }
       // SEND UP TO PARENT
       this.$emit("add-todo", newTodo);

@@ -53,7 +53,7 @@ const RegisterForm = ({ setUserData, hover }: RegisterFormProps) => {
             <input
               value={password}
               onChange={(e: ChangeEvent) => inputHandler(e, setPassword)}
-              type="text"
+              type="password"
               className="todo-input"
               placeholder="oooooo"
               required
