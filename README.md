@@ -3,15 +3,11 @@
 > Lista de Tarefas Pessoal
 
 ## TO DO: 
-- [ ] Cadastro de Usuário
-- [ ] Login
+- [X] Login
 - [X] Inserir tarefa
 - [X] Remover tarefa
 - [X] Concluir tarefa
 - [X] Recuperar tarefas acrescentadas
-- [ ] Todos Pagination
-- [ ] Transitions/Animations
-- [ ] API
 
 ## Protótipo do Projeto:
 
