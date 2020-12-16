@@ -1,6 +1,8 @@
-# Personal TDL
+# Personal TO DO LIST
 
 > Lista de Tarefas Pessoal
+
+O Todo List é uma aplciação para cadastro de tarefas, uma vez logado, o usuário consegue cadastrar tarefas, alterar o status da tarefa e/ou remove-la.
 
 ## TO DO: 
 - [X] Login
@@ -12,6 +14,10 @@
 ## Protótipo do Projeto:
 
 ### Intro
-![](https://i.imgur.com/CHdU1WN.png)
+![](https://i.imgur.com/n8JZHTn.png)
+### Register
+![](https://i.imgur.com/qELbAvP.png)
+### Login
+![](https://i.imgur.com/nBtNFN9.png)
 ### Home
-![](https://i.imgur.com/rrS5qOl.png)
+![](https://i.imgur.com/0tIEjIr.png)
