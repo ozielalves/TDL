@@ -39,6 +39,27 @@
           animation: dance 0.8s ease-in-out;
 }
 
+#register .register-title {
+  position: absolute;
+  width: 512px;
+  height: 88px;
+  left: 35%;
+  top: 1%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 58px;
+  line-height: 88px;
+  /* identical to box height */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #6d6069;
+}
+
 #register .content {
   display: -webkit-box;
   display: -ms-flexbox;

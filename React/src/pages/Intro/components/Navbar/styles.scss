@@ -1,7 +1,7 @@
-@import "../../../../props.scss"; 
+@import "../../../../props.scss";
 
 .intro-nav {
-  .menu{
+  .menu {
     @include flexing(row);
     height: 8vh;
     justify-content: flex-end;
@@ -14,16 +14,16 @@
     padding: 1rem 1.5rem;
     border-width: 3px;
     border-color: #232332;
-    border-radius: 50px; 
+    border-radius: 50px;
     border-style: solid;
     color: #232332;
     cursor: pointer;
     transition: all 0.5s ease;
     text-decoration: none;
-    
+
     &:hover {
-      background: #232332;
-      border-color: #232332;
+      background-color: #ee7600;
+      border-color: #ee7600;
       color: white;
     }
 
@@ -34,15 +34,15 @@
 
   .sing-up {
     padding: 1rem 1.5rem;
-    background: #6D6069;
+    background: #6d6069;
     border-radius: 50px;
-    border-color: #6D6069;
+    border-color: #6d6069;
     border-style: solid;
-    color: white; 
+    color: white;
     cursor: pointer;
     transition: all 0.5s ease;
     text-decoration: none;
-   
+
     &:hover {
       background: #232332;
       border-color: #232332;
@@ -52,5 +52,4 @@
   .hoveredBTn {
     color: white;
   }
-
 }

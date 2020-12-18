@@ -16,7 +16,7 @@ export default function Navbar({ handleHover, hoverBg }: navBarProps) {
           onMouseEnter={handleHover}
           onMouseLeave={handleHover}
           to="/"
-          className={hoverBg ? "go-back hoveredBTn" : "go-back"}
+          className={hoverBg ? "go-back" : "go-back"}
         >
           <i className="fas fa-arrow-left"></i>
         </Link>

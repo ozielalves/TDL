@@ -52,6 +52,7 @@ export default function Login() {
       </svg>
 
       <Navbar handleHover={handleHover} hoverBg={!hoverBg} />
+      <h2 className="login-title">Login</h2>
       <div className="content">
         <RegisterForm hover={!hoverBg} setUserData={setUserData} />
         <div className="login-logo">

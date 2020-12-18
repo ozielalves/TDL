@@ -52,6 +52,7 @@ export default function Register() {
       </svg>
 
       <Navbar handleHover={handleHover} hoverBg={!hoverBg} />
+      <h2 className="register-title">Join the team</h2>
       <div className="content">
         <RegisterForm hover={!hoverBg} setUserData={setUserData} />
         <div className="register-logo">
